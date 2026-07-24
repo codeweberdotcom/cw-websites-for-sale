@@ -130,15 +130,40 @@ class SettingsPage {
 				'description' => __( '3-column grid, browser bar, hover-scroll screenshot.', 'cw-websites-for-sale' ),
 				'preview'     => $this->svg_preview_grid(),
 			],
+			'1a' => [
+				'title'       => __( 'Browser Frame', 'cw-websites-for-sale' ),
+				'description' => __( 'Light card with browser bar, colored category badge, price + term footer, indigo buttons.', 'cw-websites-for-sale' ),
+				'preview'     => $this->svg_preview_1a(),
+			],
+			'1c' => [
+				'title'       => __( 'Price Pill + Dark Footer', 'cw-websites-for-sale' ),
+				'description' => __( 'White card, price pill on screenshot, dot+category row, two-column dark footer buttons.', 'cw-websites-for-sale' ),
+				'preview'     => $this->svg_preview_1c(),
+			],
 			'2' => [
 				'title'       => __( 'Scroll Rows', 'cw-websites-for-sale' ),
 				'description' => __( 'Alternating rows — large screenshot left/right with details.', 'cw-websites-for-sale' ),
 				'preview'     => $this->svg_preview_rows(),
 			],
+			'2a' => [
+				'title'       => __( 'Price Pill + Icon Button', 'cw-websites-for-sale' ),
+				'description' => __( 'White card, price pill on screenshot, dot+category row, wide indigo button + square icon button.', 'cw-websites-for-sale' ),
+				'preview'     => $this->svg_preview_2a(),
+			],
 			'3' => [
 				'title'       => __( 'Overlay Cards', 'cw-websites-for-sale' ),
 				'description' => __( '3-column overlay grid — title fixed at bottom, description slides in on hover.', 'cw-websites-for-sale' ),
 				'preview'     => $this->svg_preview_overlay(),
+			],
+			'3a' => [
+				'title'       => __( 'Dark — Violet Accent', 'cw-websites-for-sale' ),
+				'description' => __( 'Dark page (#0b1120), dark cards, dot+category row, lavender price, violet button + square icon.', 'cw-websites-for-sale' ),
+				'preview'     => $this->svg_preview_3a(),
+			],
+			'3b' => [
+				'title'       => __( 'Dark — White Button', 'cw-websites-for-sale' ),
+				'description' => __( 'Dark page, inset rounded screenshot with category badge, white primary button + outline preview.', 'cw-websites-for-sale' ),
+				'preview'     => $this->svg_preview_3b(),
 			],
 		];
 	}
@@ -223,6 +248,141 @@ class SettingsPage {
 					<stop offset="100%" stop-color="#000" stop-opacity=".55"/>
 				</linearGradient>
 			</defs>
+		</svg>';
+	}
+
+	private function svg_preview_1a(): string {
+		return '<svg width="120" height="80" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+			<rect x="4"  y="4"  width="34" height="50" rx="2" fill="#e0e0e0"/>
+			<rect x="43" y="4"  width="34" height="50" rx="2" fill="#e0e0e0"/>
+			<rect x="82" y="4"  width="34" height="50" rx="2" fill="#e0e0e0"/>
+			<rect x="4"  y="4"  width="34" height="6"  rx="2" fill="#f5f5f5"/>
+			<rect x="43" y="4"  width="34" height="6"  rx="2" fill="#f5f5f5"/>
+			<rect x="82" y="4"  width="34" height="6"  rx="2" fill="#f5f5f5"/>
+			<circle cx="8"  cy="7" r="2" fill="#f87171"/>
+			<circle cx="13" cy="7" r="2" fill="#fbbf24"/>
+			<circle cx="18" cy="7" r="2" fill="#34d399"/>
+			<circle cx="47" cy="7" r="2" fill="#f87171"/>
+			<circle cx="52" cy="7" r="2" fill="#fbbf24"/>
+			<circle cx="57" cy="7" r="2" fill="#34d399"/>
+			<circle cx="86" cy="7" r="2" fill="#f87171"/>
+			<circle cx="91" cy="7" r="2" fill="#fbbf24"/>
+			<circle cx="96" cy="7" r="2" fill="#34d399"/>
+			<rect x="4"  y="10" width="34" height="22" fill="#c3c4c7"/>
+			<rect x="43" y="10" width="34" height="22" fill="#c3c4c7"/>
+			<rect x="82" y="10" width="34" height="22" fill="#c3c4c7"/>
+			<rect x="5"  y="34" width="14" height="4"  rx="1" fill="#818cf8"/>
+			<rect x="44" y="34" width="14" height="4"  rx="1" fill="#4ade80"/>
+			<rect x="83" y="34" width="14" height="4"  rx="1" fill="#f472b6"/>
+			<rect x="5"  y="40" width="30" height="4"  rx="1" fill="#646970"/>
+			<rect x="44" y="40" width="30" height="4"  rx="1" fill="#646970"/>
+			<rect x="83" y="40" width="30" height="4"  rx="1" fill="#646970"/>
+			<rect x="5"  y="47" width="20" height="5"  rx="1" fill="#4f46e5"/>
+			<rect x="44" y="47" width="20" height="5"  rx="1" fill="#4f46e5"/>
+			<rect x="83" y="47" width="20" height="5"  rx="1" fill="#4f46e5"/>
+		</svg>';
+	}
+
+	private function svg_preview_1c(): string {
+		return '<svg width="120" height="80" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+			<rect x="4"  y="4"  width="34" height="50" rx="2" fill="#e0e0e0"/>
+			<rect x="43" y="4"  width="34" height="50" rx="2" fill="#e0e0e0"/>
+			<rect x="82" y="4"  width="34" height="50" rx="2" fill="#e0e0e0"/>
+			<rect x="4"  y="4"  width="34" height="26" fill="#c3c4c7"/>
+			<rect x="43" y="4"  width="34" height="26" fill="#c3c4c7"/>
+			<rect x="82" y="4"  width="34" height="26" fill="#c3c4c7"/>
+			<rect x="23" y="6"  width="14" height="5" rx="2" fill="#fff" opacity=".9"/>
+			<rect x="62" y="6"  width="14" height="5" rx="2" fill="#fff" opacity=".9"/>
+			<rect x="101" y="6" width="14" height="5" rx="2" fill="#fff" opacity=".9"/>
+			<rect x="5"  y="32" width="30" height="4"  rx="1" fill="#646970"/>
+			<rect x="44" y="32" width="30" height="4"  rx="1" fill="#646970"/>
+			<rect x="83" y="32" width="30" height="4"  rx="1" fill="#646970"/>
+			<rect x="5"  y="38" width="20" height="4"  rx="1" fill="#3f4a52"/>
+			<rect x="44" y="38" width="20" height="4"  rx="1" fill="#3f4a52"/>
+			<rect x="83" y="38" width="20" height="4"  rx="1" fill="#3f4a52"/>
+			<rect x="4"  y="45" width="17" height="9"  fill="#0f172a"/>
+			<rect x="21" y="45" width="17" height="9"  fill="#1e293b"/>
+			<rect x="43" y="45" width="17" height="9"  fill="#0f172a"/>
+			<rect x="60" y="45" width="17" height="9"  fill="#1e293b"/>
+			<rect x="82" y="45" width="17" height="9"  fill="#0f172a"/>
+			<rect x="99" y="45" width="17" height="9"  fill="#1e293b"/>
+		</svg>';
+	}
+
+	private function svg_preview_2a(): string {
+		return '<svg width="120" height="80" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+			<rect x="4"  y="4"  width="34" height="50" rx="2" fill="#e0e0e0"/>
+			<rect x="43" y="4"  width="34" height="50" rx="2" fill="#e0e0e0"/>
+			<rect x="82" y="4"  width="34" height="50" rx="2" fill="#e0e0e0"/>
+			<rect x="4"  y="4"  width="34" height="26" fill="#c3c4c7"/>
+			<rect x="43" y="4"  width="34" height="26" fill="#c3c4c7"/>
+			<rect x="82" y="4"  width="34" height="26" fill="#c3c4c7"/>
+			<rect x="23" y="6"  width="14" height="5" rx="2" fill="#fff" opacity=".9"/>
+			<rect x="62" y="6"  width="14" height="5" rx="2" fill="#fff" opacity=".9"/>
+			<rect x="101" y="6" width="14" height="5" rx="2" fill="#fff" opacity=".9"/>
+			<rect x="5"  y="32" width="30" height="4"  rx="1" fill="#646970"/>
+			<rect x="44" y="32" width="30" height="4"  rx="1" fill="#646970"/>
+			<rect x="83" y="32" width="30" height="4"  rx="1" fill="#646970"/>
+			<rect x="5"  y="38" width="30" height="4"  rx="1" fill="#3f4a52"/>
+			<rect x="44" y="38" width="30" height="4"  rx="1" fill="#3f4a52"/>
+			<rect x="83" y="38" width="30" height="4"  rx="1" fill="#3f4a52"/>
+			<rect x="5"  y="44" width="22" height="7"  rx="1" fill="#4f46e5"/>
+			<rect x="44" y="44" width="22" height="7"  rx="1" fill="#4f46e5"/>
+			<rect x="83" y="44" width="22" height="7"  rx="1" fill="#4f46e5"/>
+			<rect x="29" y="44" width="7"  height="7"  rx="1" fill="#e0e0e0"/>
+			<rect x="68" y="44" width="7"  height="7"  rx="1" fill="#e0e0e0"/>
+			<rect x="107" y="44" width="7" height="7"  rx="1" fill="#e0e0e0"/>
+		</svg>';
+	}
+
+	private function svg_preview_3a(): string {
+		return '<svg width="120" height="80" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+			<rect x="0" y="0" width="120" height="80" fill="#0b1120"/>
+			<rect x="4"  y="4"  width="34" height="50" rx="3" fill="#1a2234" stroke="#26324a" stroke-width="1"/>
+			<rect x="43" y="4"  width="34" height="50" rx="3" fill="#1a2234" stroke="#26324a" stroke-width="1"/>
+			<rect x="82" y="4"  width="34" height="50" rx="3" fill="#1a2234" stroke="#26324a" stroke-width="1"/>
+			<rect x="4"  y="4"  width="34" height="22" fill="#26324a"/>
+			<rect x="43" y="4"  width="34" height="22" fill="#26324a"/>
+			<rect x="82" y="4"  width="34" height="22" fill="#26324a"/>
+			<rect x="5"  y="28" width="30" height="4"  rx="1" fill="#f1f5f9" opacity=".8"/>
+			<rect x="44" y="28" width="30" height="4"  rx="1" fill="#f1f5f9" opacity=".8"/>
+			<rect x="83" y="28" width="30" height="4"  rx="1" fill="#f1f5f9" opacity=".8"/>
+			<rect x="5"  y="34" width="18" height="4"  rx="1" fill="#a5b4fc"/>
+			<rect x="44" y="34" width="18" height="4"  rx="1" fill="#a5b4fc"/>
+			<rect x="83" y="34" width="18" height="4"  rx="1" fill="#a5b4fc"/>
+			<rect x="5"  y="40" width="22" height="7"  rx="1" fill="#818cf8"/>
+			<rect x="44" y="40" width="22" height="7"  rx="1" fill="#818cf8"/>
+			<rect x="83" y="40" width="22" height="7"  rx="1" fill="#818cf8"/>
+			<rect x="29" y="40" width="7"  height="7"  rx="1" fill="#26324a"/>
+			<rect x="68" y="40" width="7"  height="7"  rx="1" fill="#26324a"/>
+			<rect x="107" y="40" width="7" height="7"  rx="1" fill="#26324a"/>
+		</svg>';
+	}
+
+	private function svg_preview_3b(): string {
+		return '<svg width="120" height="80" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+			<rect x="0" y="0" width="120" height="80" fill="#0b1120"/>
+			<rect x="4"  y="4"  width="34" height="50" rx="3" fill="#171f30" stroke="#26324a" stroke-width="1"/>
+			<rect x="43" y="4"  width="34" height="50" rx="3" fill="#171f30" stroke="#26324a" stroke-width="1"/>
+			<rect x="82" y="4"  width="34" height="50" rx="3" fill="#171f30" stroke="#26324a" stroke-width="1"/>
+			<rect x="6"  y="6"  width="30" height="20" rx="2" fill="#26324a"/>
+			<rect x="45" y="6"  width="30" height="20" rx="2" fill="#26324a"/>
+			<rect x="84" y="6"  width="30" height="20" rx="2" fill="#26324a"/>
+			<rect x="7"  y="7"  width="10" height="4"  rx="1" fill="#dbeafe" opacity=".9"/>
+			<rect x="46" y="7"  width="10" height="4"  rx="1" fill="#dcfce7" opacity=".9"/>
+			<rect x="85" y="7"  width="10" height="4"  rx="1" fill="#fce7f3" opacity=".9"/>
+			<rect x="5"  y="28" width="30" height="4"  rx="1" fill="#f1f5f9" opacity=".8"/>
+			<rect x="44" y="28" width="30" height="4"  rx="1" fill="#f1f5f9" opacity=".8"/>
+			<rect x="83" y="28" width="30" height="4"  rx="1" fill="#f1f5f9" opacity=".8"/>
+			<rect x="5"  y="34" width="18" height="4"  rx="1" fill="#a5b4fc"/>
+			<rect x="44" y="34" width="18" height="4"  rx="1" fill="#a5b4fc"/>
+			<rect x="83" y="34" width="18" height="4"  rx="1" fill="#a5b4fc"/>
+			<rect x="5"  y="40" width="22" height="7"  rx="1" fill="#ffffff"/>
+			<rect x="44" y="40" width="22" height="7"  rx="1" fill="#ffffff"/>
+			<rect x="83" y="40" width="22" height="7"  rx="1" fill="#ffffff"/>
+			<rect x="29" y="40" width="7"  height="7"  rx="1" fill="#1e293b"/>
+			<rect x="68" y="40" width="7"  height="7"  rx="1" fill="#1e293b"/>
+			<rect x="107" y="40" width="7" height="7"  rx="1" fill="#1e293b"/>
 		</svg>';
 	}
 }
