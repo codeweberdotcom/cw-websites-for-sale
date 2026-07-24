@@ -25,8 +25,10 @@ $grid_gap  = class_exists( 'Codeweber_Options' ) ? Codeweber_Options::style( 'gr
 
 $card_radius = class_exists( 'Codeweber_Options' ) ? Codeweber_Options::style( 'card-radius' ) : 'rounded';
 $btn_style   = class_exists( 'Codeweber_Options' ) ? Codeweber_Options::style( 'button' ) : '';
-$cols_map    = [ '2' => 'col-md-6', '3' => 'col-md-6 col-xl-4', '4' => 'col-md-6 col-xl-3' ];
-$col_class   = $cols_map[ cw_wfs_setting( 'archive_columns', '3' ) ] ?? 'col-md-6 col-xl-4';
+$cols_setting = cw_wfs_setting( 'archive_columns', '3' );
+$cols_map     = [ '2' => 'col-md-6', '3' => 'col-md-6 col-xl-4', '4' => 'col-md-6 col-xl-3' ];
+$col_class    = $cols_map[ $cols_setting ] ?? 'col-md-6 col-xl-4';
+$screen_h     = $cols_setting === '4' ? 210 : 285;
 
 $status_cfg = [
 	'for_sale' => [ 'label' => esc_html__( 'For Sale', 'cw-websites-for-sale' ), 'class' => 'bg-success' ],
@@ -80,7 +82,7 @@ $status_cfg = [
 		?>
 		<div class="<?php echo esc_attr( $col_class ); ?>">
 			<div class="card h-100 bg-dark shadow-lg <?php echo esc_attr( $card_radius ); ?>">
-				<div class="cw-it-screen position-relative overflow-hidden mx-2 mt-2 <?php echo esc_attr( $card_radius ); ?>" style="height:285px">
+				<div class="cw-it-screen position-relative overflow-hidden mx-2 mt-2 <?php echo esc_attr( $card_radius ); ?>" style="height:<?php echo $screen_h; ?>px">
 					<?php if ( $screenshot ) :
 						echo wp_get_attachment_image( $screenshot, 'full', false, [
 							'alt'   => esc_attr( $title ),
