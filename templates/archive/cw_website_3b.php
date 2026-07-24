@@ -184,7 +184,7 @@ $status_cfg = [
 		var loader  = document.getElementById('cw-preview-loader');
 		if (loader)  loader.classList.remove('done');
 		if (titleEl) titleEl.textContent = title;
-		if (frame)   { frame.src = ''; setTimeout(function() { frame.src = url; }, 0); }
+		if (frame)   { frame.src = url; }
 	});
 
 	function fetchFiltered() {
