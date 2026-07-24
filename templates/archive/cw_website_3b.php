@@ -25,6 +25,8 @@ $grid_gap  = class_exists( 'Codeweber_Options' ) ? Codeweber_Options::style( 'gr
 
 $card_radius = class_exists( 'Codeweber_Options' ) ? Codeweber_Options::style( 'card-radius' ) : 'rounded';
 $btn_style   = class_exists( 'Codeweber_Options' ) ? Codeweber_Options::style( 'button' ) : '';
+$cols_map    = [ '2' => 'col-md-6', '3' => 'col-md-6 col-xl-4', '4' => 'col-md-6 col-xl-3' ];
+$col_class   = $cols_map[ cw_wfs_setting( 'archive_columns', '3' ) ] ?? 'col-md-6 col-xl-4';
 
 $status_cfg = [
 	'for_sale' => [ 'label' => esc_html__( 'For Sale', 'cw-websites-for-sale' ), 'class' => 'bg-success' ],
@@ -76,13 +78,14 @@ $status_cfg = [
 			$cat_c       = ( $cats && ! is_wp_error( $cats ) ) ? $cat_colors[ $cats[0]->term_id % 6 ] : $cat_colors[0];
 			$st          = $status_cfg[ $status ] ?? $status_cfg['for_sale'];
 		?>
-		<div class="col-md-6 col-xl-4">
+		<div class="<?php echo esc_attr( $col_class ); ?>">
 			<div class="card h-100 bg-dark shadow-lg <?php echo esc_attr( $card_radius ); ?>">
-				<div class="position-relative overflow-hidden mx-2 mt-2 <?php echo esc_attr( $card_radius ); ?>" style="height:285px">
+				<div class="cw-it-screen position-relative overflow-hidden mx-2 mt-2 <?php echo esc_attr( $card_radius ); ?>" style="height:285px">
 					<?php if ( $screenshot ) :
 						echo wp_get_attachment_image( $screenshot, 'full', false, [
 							'alt'   => esc_attr( $title ),
-							'class' => 'w-100 h-100 object-fit-cover object-position-top',
+							'class' => 'w-100 cw-it-screenshot',
+							'style' => 'height:auto',
 						] );
 					else : ?>
 					<div class="w-100 h-100 bg-ash"></div>
@@ -94,8 +97,8 @@ $status_cfg = [
 				</div>
 				<div class="card-body p-4">
 					<div class="post-header">
-						<h3 class="post-title h5 mb-2 text-white"><a href="<?php echo esc_url( $permalink ); ?>" class="link-inverse"><?php echo esc_html( $title ); ?></a></h3>
-						<p class="price text-primary mb-0">
+						<h3 class="post-title h5 mb-0 text-white"><a href="<?php echo esc_url( $permalink ); ?>" class="link-inverse"><?php echo esc_html( $title ); ?></a></h3>
+						<p class="price text-primary fs-22 fw-bold mb-0">
 							<ins><span class="amount"><?php echo $price ? esc_html( $price ) . ' ₽' : ''; ?></span></ins>
 							<?php if ( $launch_time ) : ?>
 							<span class="text-muted fs-sm ms-2">· <?php echo esc_html( $launch_time ); ?></span>
@@ -104,9 +107,14 @@ $status_cfg = [
 					</div>
 				</div>
 				<div class="card-footer d-flex gap-2 bg-transparent border-0 pt-0 px-4 pb-4">
-					<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-white<?php echo esc_attr( $btn_style ); ?> has-ripple flex-grow-1"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
+					<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-outline-white<?php echo esc_attr( $btn_style ); ?> has-ripple flex-grow-1"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
 					<?php if ( $website_url ) : ?>
-					<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" class="btn btn-ash<?php echo esc_attr( $btn_style ); ?> has-ripple"><i class="uil uil-play-circle me-1"></i><?php esc_html_e( 'Preview', 'cw-websites-for-sale' ); ?></a>
+					<button type="button" class="btn btn-outline-primary<?php echo esc_attr( $btn_style ); ?> has-ripple"
+						data-bs-toggle="modal" data-bs-target="#cw-preview-modal"
+						data-website-url="<?php echo esc_url( $website_url ); ?>"
+						data-website-title="<?php echo esc_attr( wp_strip_all_tags( $title ) ); ?>">
+						<i class="uil uil-play-circle me-1"></i><?php esc_html_e( 'Preview', 'cw-websites-for-sale' ); ?>
+					</button>
 					<?php endif; ?>
 				</div>
 			</div>
@@ -134,6 +142,48 @@ $status_cfg = [
 	var tagBtns     = document.querySelectorAll('.cw-wfs-tag-filters .cw-wfs-tag-btn');
 	var resultsWrap = document.getElementById('cw-wfs-grid-results');
 	var activeCatId = 0, activeTagId = 0;
+	var SCROLL_SPEED = 120;
+
+	function getCurrentY(img) {
+		var m = window.getComputedStyle(img).transform;
+		if (!m || m === 'none') return 0;
+		var v = m.match(/matrix\([^,]+,[^,]+,[^,]+,[^,]+,[^,]+,\s*([-\d.]+)\)/);
+		return v ? parseFloat(v[1]) : 0;
+	}
+	function scrollTo(img, targetY) {
+		var dist = Math.abs(targetY - getCurrentY(img));
+		if (dist < 1) return;
+		img.style.transition = 'transform ' + (dist / SCROLL_SPEED).toFixed(2) + 's linear';
+		img.style.transform  = 'translateY(' + targetY + 'px)';
+	}
+	function initScreenScroll(root) {
+		(root || document).querySelectorAll('.cw-it-screen').forEach(function (wrap) {
+			if (wrap.dataset.cwScrollInit) return;
+			wrap.dataset.cwScrollInit = '1';
+			var img = wrap.querySelector('.cw-it-screenshot');
+			if (!img) return;
+			function getScrollDist() {
+				return Math.max(0, img.naturalHeight * (img.offsetWidth / (img.naturalWidth || 1)) - wrap.offsetHeight);
+			}
+			wrap.addEventListener('mouseenter', function () { var d = getScrollDist(); if (d > 0) scrollTo(img, -Math.round(d * 0.9)); });
+			wrap.addEventListener('mouseleave', function () { scrollTo(img, 0); });
+		});
+	}
+	initScreenScroll();
+
+	// Direct preview handler — relatedTarget in show.bs.modal is unreliable
+	document.addEventListener('click', function(e) {
+		var btn = e.target.closest('[data-bs-target="#cw-preview-modal"]');
+		if (!btn) return;
+		var url     = btn.getAttribute('data-website-url') || '';
+		var title   = btn.getAttribute('data-website-title') || '';
+		var frame   = document.getElementById('cw-preview-frame');
+		var titleEl = document.getElementById('cw-preview-title');
+		var loader  = document.getElementById('cw-preview-loader');
+		if (loader)  loader.classList.remove('done');
+		if (titleEl) titleEl.textContent = title;
+		if (frame)   { frame.src = ''; setTimeout(function() { frame.src = url; }, 0); }
+	});
 
 	function fetchFiltered() {
 		if ( ! resultsWrap || typeof fetch_vars === 'undefined' ) return;
@@ -149,7 +199,7 @@ $status_cfg = [
 		body.append( 'params', JSON.stringify({ post_type: 'cw_website', template: 'cw_websites_3b', filters: filters }) );
 		fetch( fetch_vars.ajaxurl, { method: 'POST', body: body } )
 			.then( function(r) { return r.json(); } )
-			.then( function(data) { if ( data.status === 'success' && resultsWrap ) resultsWrap.innerHTML = data.data.html; } )
+			.then( function(data) { if ( data.status === 'success' && resultsWrap ) { resultsWrap.innerHTML = data.data.html; initScreenScroll(resultsWrap); } } )
 			.catch( function(err) { console.error('[CW WFS] filter error:', err); } )
 			.finally( function() { if ( resultsWrap ) { resultsWrap.style.opacity = ''; resultsWrap.style.pointerEvents = ''; } } );
 	}
@@ -175,5 +225,7 @@ $status_cfg = [
 	});
 })();
 </script>
+
+<?php get_template_part( 'templates/components/cw-preview-modal' ); ?>
 
 <?php get_footer(); ?>
