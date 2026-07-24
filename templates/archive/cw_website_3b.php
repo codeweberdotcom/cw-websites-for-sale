@@ -29,32 +29,14 @@ $status_cfg = [
 	'reserved' => [ 'label' => esc_html__( 'Reserved', 'cw-websites-for-sale' ), 'class' => 'bg-warning text-dark' ],
 ];
 ?>
-<style>
-#content-wrapper.cw-wfs-3b-page { background:#0b1120; }
-.cw-wfs-3b-card  { background:#171f30; border:1px solid #26324a; border-radius:18px; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 8px 24px rgba(0,0,0,.4); transition:transform .18s,box-shadow .18s,border-color .18s; }
-.cw-wfs-3b-card:hover { transform:translateY(-4px); box-shadow:0 22px 48px rgba(0,0,0,.6); border-color:#818cf8; }
-.cw-wfs-3b-wrap  { margin:10px 10px 0; border-radius:12px; overflow:hidden; position:relative; height:176px; }
-.cw-wfs-3b-wrap img { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
-.cw-wfs-3b-cat   { position:absolute; top:10px; left:10px; display:inline-flex; align-items:center; height:26px; padding:0 11px; border-radius:7px; font-size:12px; font-weight:700; box-shadow:0 2px 8px rgba(0,0,0,.35); z-index:2; }
-.cw-wfs-3b-ov    { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(11,17,32,.6); opacity:0; transition:opacity .18s; }
-.cw-wfs-3b-wrap:hover .cw-wfs-3b-ov { opacity:1; }
-.cw-wfs-3b-price { font-size:22px; font-weight:800; color:#a5b4fc; line-height:1; }
-.cw-wfs-3b-btn   { display:flex; align-items:center; justify-content:center; height:46px; border-radius:11px; background:#fff; color:#0f172a; font-weight:700; font-size:15px; text-decoration:none; }
-.cw-wfs-3b-btn:hover { background:#e2e8f0; color:#0f172a; }
-.cw-wfs-3b-btn-sec { display:flex; align-items:center; justify-content:center; height:46px; padding:0 16px; border-radius:11px; border:1px solid #334155; color:#cbd5e1; font-weight:700; font-size:15px; text-decoration:none; white-space:nowrap; }
-.cw-wfs-3b-btn-sec:hover { border-color:#a5b4fc; color:#fff; }
-.cw-btn-grid-3b  { display:grid; grid-template-columns:1fr auto; gap:8px; }
-.cw-wfs-3b-filter-bar .filter-item { color:#94a3b8; }
-.cw-wfs-3b-filter-bar .filter-item:hover,.cw-wfs-3b-filter-bar .filter-item.active { color:#a5b4fc; border-color:#818cf8; }
-</style>
 
-<section id="content-wrapper" class="wrapper cw-wfs-3b-page">
+<section id="content-wrapper" class="wrapper">
 	<div class="container py-14 py-md-16">
 
 		<?php if ( $has_cats || $has_tags ) : ?>
 		<div class="cw-wfs-filters mb-10">
 			<?php if ( $has_cats ) : ?>
-			<div class="isotope-filter filter cw-wfs-cat-filters cw-wfs-3b-filter-bar mb-4">
+			<div class="isotope-filter filter cw-wfs-cat-filters mb-4">
 				<ul>
 					<li><a class="filter-item active" data-cat-id="0"><?php esc_html_e( 'All', 'cw-websites-for-sale' ); ?></a></li>
 					<?php foreach ( $cat_terms as $term ) : ?>
@@ -92,38 +74,33 @@ $status_cfg = [
 			$st          = $status_cfg[ $status ] ?? $status_cfg['for_sale'];
 		?>
 		<div class="col-md-6 col-xl-4">
-			<div class="cw-wfs-3b-card h-100">
-				<div class="cw-wfs-3b-wrap">
+			<div class="rounded-3 overflow-hidden d-flex flex-column h-100 shadow-lg bg-dark">
+				<div class="position-relative overflow-hidden mx-2 mt-2 rounded-3" style="height:285px">
 					<?php if ( $screenshot ) :
-						echo wp_get_attachment_image( $screenshot, 'full', false, [ 'alt' => esc_attr( $title ) ] );
+						echo wp_get_attachment_image( $screenshot, 'full', false, [ 'alt' => esc_attr( $title ), 'class' => 'w-100 h-100 object-fit-cover object-position-top' ] );
 					else : ?>
-					<div class="w-100 h-100" style="background:#26324a;"></div>
+					<div class="w-100 h-100 bg-secondary opacity-25"></div>
 					<?php endif; ?>
 					<?php if ( $cat_name ) : ?>
-					<span class="cw-wfs-3b-cat" style="background:<?php echo esc_attr( $cat_c['bg'] ); ?>;color:<?php echo esc_attr( $cat_c['fg'] ); ?>;"><?php echo esc_html( $cat_name ); ?></span>
+					<span class="badge position-absolute top-0 start-0 m-2 fw-bold" style="background:<?php echo esc_attr( $cat_c['bg'] ); ?>;color:<?php echo esc_attr( $cat_c['fg'] ); ?>;"><?php echo esc_html( $cat_name ); ?></span>
 					<?php endif; ?>
-					<span class="badge <?php echo esc_attr( $st['class'] ); ?> position-absolute top-0 end-0 m-2" style="z-index:3;"><?php echo $st['label']; ?></span>
-					<?php if ( $website_url ) : ?>
-					<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" class="cw-wfs-3b-ov text-decoration-none">
-						<span class="rounded-pill fw-bold px-4 py-2" style="background:#818cf8;color:#0b1120;font-size:14px;"><i class="uil uil-play-circle me-2"></i><?php esc_html_e( 'Live Preview', 'cw-websites-for-sale' ); ?></span>
-					</a>
-					<?php endif; ?>
+					<span class="badge <?php echo esc_attr( $st['class'] ); ?> position-absolute top-0 end-0 m-2"><?php echo $st['label']; ?></span>
 				</div>
 				<div class="d-flex flex-column gap-3 p-4 flex-grow-1">
-					<h3 class="mb-0 fw-bold" style="font-size:19px;color:#f1f5f9;letter-spacing:-.02em;line-height:1.2;"><?php echo esc_html( $title ); ?></h3>
+					<h3 class="mb-0 fw-bold fs-5 text-white"><?php echo esc_html( $title ); ?></h3>
 					<div class="d-flex align-items-baseline gap-2">
 						<?php if ( $price ) : ?>
-						<span class="cw-wfs-3b-price"><?php echo esc_html( $price ); ?> ₽</span>
+						<span class="fw-bold fs-4 text-primary"><?php echo esc_html( $price ); ?> ₽</span>
 						<?php endif; ?>
 						<?php if ( $launch_time ) : ?>
-						<span class="small fw-semibold" style="color:#64748b;">· <?php echo esc_html( $launch_time ); ?></span>
+						<span class="small fw-semibold text-muted">· <?php echo esc_html( $launch_time ); ?></span>
 						<?php endif; ?>
 					</div>
 				</div>
-				<div class="cw-btn-grid-3b px-4 pb-4">
-					<a href="<?php echo esc_url( $permalink ); ?>" class="cw-wfs-3b-btn"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
+				<div class="d-flex gap-2 px-4 pb-4">
+					<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-light flex-grow-1"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
 					<?php if ( $website_url ) : ?>
-					<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" class="cw-wfs-3b-btn-sec"><i class="uil uil-play-circle me-1"></i><?php esc_html_e( 'Preview', 'cw-websites-for-sale' ); ?></a>
+					<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" class="btn btn-outline-secondary"><i class="uil uil-play-circle me-1"></i><?php esc_html_e( 'Preview', 'cw-websites-for-sale' ); ?></a>
 					<?php endif; ?>
 				</div>
 			</div>
@@ -138,7 +115,7 @@ $status_cfg = [
 		endif; ?>
 
 		<?php else : ?>
-		<p style="color:#94a3b8;"><?php esc_html_e( 'No websites found.', 'cw-websites-for-sale' ); ?></p>
+		<p class="text-muted"><?php esc_html_e( 'No websites found.', 'cw-websites-for-sale' ); ?></p>
 		<?php endif; ?>
 		</div>
 
@@ -184,7 +161,7 @@ $status_cfg = [
 		btn.addEventListener( 'click', function(e) {
 			e.preventDefault();
 			activeTagId = +btn.getAttribute('data-tag-id');
-			tagBtns.forEach( function(b) { b.classList.remove('active','bg-primary','text-white'); b.classList.add('bg-soft-ash','text-ash'); } );
+			tagBtns.forEach( function(b) { b.classList.remove('bg-primary','text-white'); b.classList.add('bg-soft-ash','text-ash'); b.classList.remove('active'); } );
 			btn.classList.remove('bg-soft-ash','text-ash');
 			btn.classList.add('active','bg-primary','text-white');
 			fetchFiltered();

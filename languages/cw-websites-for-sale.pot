@@ -1,392 +1,503 @@
-# Copyright (C) 2024 CodeWeber
+# Copyright (C) 2026 CodeWeber
 # This file is distributed under the same license as the CW Websites For Sale plugin.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: CW Websites For Sale 1.0.0\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-07-23 12:00+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Project-Id-Version: CW Websites For Sale 1.0.1\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/cw-websites-for-sale\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-07-24T18:49:54+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: cw-websites-for-sale\n"
 
 #. Plugin Name of the plugin
+#: cw-websites-for-sale.php
 msgid "CW Websites For Sale"
 msgstr ""
 
-#. Plugin Description
+#. Description of the plugin
+#: cw-websites-for-sale.php
 msgid "Website sales catalog: IT-style cards with hover-scroll screenshots, device preview modal, category and tag AJAX filters."
 msgstr ""
 
-#: src/Plugin.php
-msgid "Websites For Sale"
+#. Author of the plugin
+#: cw-websites-for-sale.php
+msgid "CodeWeber"
 msgstr ""
 
-#: src/Plugin.php
-msgid "Website"
-msgstr ""
-
-#: src/Plugin.php
-msgid "All Websites"
-msgstr ""
-
-#: src/Plugin.php
-msgid "Add New"
-msgstr ""
-
-#: src/Plugin.php
-msgid "Add New Website"
-msgstr ""
-
-#: src/Plugin.php
-msgid "Edit Website"
-msgstr ""
-
-#: src/Plugin.php
-msgid "New Website"
-msgstr ""
-
-#: src/Plugin.php
-msgid "View Website"
-msgstr ""
-
-#: src/Plugin.php
-msgid "Search Websites"
-msgstr ""
-
-#: src/Plugin.php
-msgid "No websites found"
-msgstr ""
-
-#: src/Plugin.php
-msgid "No websites found in trash"
-msgstr ""
-
-#: src/Plugin.php
-msgid "Categories"
-msgstr ""
-
-#: src/Plugin.php
-msgid "Category"
-msgstr ""
-
-#: src/Plugin.php
-msgid "All Categories"
-msgstr ""
-
-#: src/Plugin.php
-msgid "Add New Category"
-msgstr ""
-
-#: src/Plugin.php
-msgid "Edit Category"
-msgstr ""
-
-#: src/Plugin.php
-msgid "New Category"
-msgstr ""
-
-#: src/Plugin.php
-msgid "Search Categories"
-msgstr ""
-
-#: src/Plugin.php
-msgid "No categories found"
-msgstr ""
-
-#: src/Plugin.php
-msgid "Tags"
-msgstr ""
-
-#: src/Plugin.php
-msgid "Tag"
-msgstr ""
-
-#: src/Plugin.php
-msgid "All Tags"
-msgstr ""
-
-#: src/Plugin.php
-msgid "Add New Tag"
-msgstr ""
-
-#: src/Plugin.php
-msgid "Edit Tag"
-msgstr ""
-
-#: src/Plugin.php
-msgid "New Tag"
-msgstr ""
-
-#: src/Plugin.php
-msgid "Search Tags"
-msgstr ""
-
-#: src/Plugin.php
-msgid "No tags found"
-msgstr ""
-
-#: src/Plugin.php
-#: src/Admin/Metaboxes.php
-#: templates/archive/cw_website_2.php
-#: templates/archive/cw_website_3.php
-#: templates/single-cw_website.php
-#: templates/single/cw_website_1.php
-#: templates/single/cw_website_2.php
-msgid "For Sale"
-msgstr ""
-
-#: src/Plugin.php
-#: src/Admin/Metaboxes.php
-#: templates/archive/cw_website_2.php
-#: templates/archive/cw_website_3.php
-#: templates/single-cw_website.php
-#: templates/single/cw_website_1.php
-#: templates/single/cw_website_2.php
-msgid "Sold"
-msgstr ""
-
-#: src/Plugin.php
-#: src/Admin/Metaboxes.php
-#: templates/archive/cw_website_2.php
-#: templates/archive/cw_website_3.php
-#: templates/single-cw_website.php
-#: templates/single/cw_website_1.php
-#: templates/single/cw_website_2.php
-msgid "Reserved"
-msgstr ""
-
-#: src/Plugin.php
-#: templates/archive/cw_website_3.php
-#: templates/single-cw_website.php
-#: templates/single/cw_website_1.php
-#: templates/single/cw_website_2.php
-msgid "Preview"
-msgstr ""
-
-#: src/Admin/SettingsPage.php
-msgid "Templates"
-msgstr ""
-
-#: src/Admin/SettingsPage.php
-msgid "Archive Template"
-msgstr ""
-
-#: src/Admin/SettingsPage.php
-msgid "Single Template"
-msgstr ""
-
-#: src/Admin/SettingsPage.php
-msgid "Websites For Sale — Templates"
-msgstr ""
-
-#: src/Admin/SettingsPage.php
-msgid "Save Settings"
-msgstr ""
-
-#: src/Admin/SettingsPage.php
-msgid "Template"
-msgstr ""
-
-#: src/Admin/SettingsPage.php
-msgid "IT Cards"
-msgstr ""
-
-#: src/Admin/SettingsPage.php
-msgid "3-column grid, browser bar, hover-scroll screenshot."
-msgstr ""
-
-#: src/Admin/SettingsPage.php
-msgid "Scroll Rows"
-msgstr ""
-
-#: src/Admin/SettingsPage.php
-msgid "Alternating rows — large screenshot left/right with details."
-msgstr ""
-
-#: src/Admin/SettingsPage.php
-msgid "Overlay Cards"
-msgstr ""
-
-#: src/Admin/SettingsPage.php
-msgid "3-column overlay grid — title fixed at bottom, description slides in on hover."
-msgstr ""
-
-#: src/Admin/SettingsPage.php
-msgid "Sidebar"
-msgstr ""
-
-#: src/Admin/SettingsPage.php
-msgid "Screenshot on the left (8 cols), sticky info card on the right (4 cols)."
-msgstr ""
-
-#: src/Admin/SettingsPage.php
-msgid "Wide"
-msgstr ""
-
-#: src/Admin/SettingsPage.php
-msgid "Full-width screenshot, price and details below in a two-column row."
-msgstr ""
-
-#: src/Admin/Metaboxes.php
+#: src/Admin/Metaboxes.php:16
 msgid "Website Details"
 msgstr ""
 
-#: src/Admin/Metaboxes.php
+#: src/Admin/Metaboxes.php:39
 msgid "Demo URL"
 msgstr ""
 
-#: src/Admin/Metaboxes.php
+#: src/Admin/Metaboxes.php:46
 msgid "— select site —"
 msgstr ""
 
-#: src/Admin/Metaboxes.php
+#: src/Admin/Metaboxes.php:61
 msgid "Shown in browser bar and iframe preview."
 msgstr ""
 
-#: src/Admin/Metaboxes.php
+#: src/Admin/Metaboxes.php:66
 msgid "Screenshot"
 msgstr ""
 
-#: src/Admin/Metaboxes.php
+#: src/Admin/Metaboxes.php:75
 msgid "Select screenshot"
 msgstr ""
 
-#: src/Admin/Metaboxes.php
+#: src/Admin/Metaboxes.php:79
 msgid "Remove"
 msgstr ""
 
-#: src/Admin/Metaboxes.php
+#: src/Admin/Metaboxes.php:82
 msgid "Full-height page screenshot — used for hover-scroll effect."
 msgstr ""
 
-#: src/Admin/Metaboxes.php
-#: templates/archive/cw_website_2.php
+#: src/Admin/Metaboxes.php:87
+#: templates/archive/cw_website_2.php:158
 msgid "Price"
 msgstr ""
 
-#: src/Admin/Metaboxes.php
+#: src/Admin/Metaboxes.php:91
 msgid "e.g. 50 000 ₽"
 msgstr ""
 
-#: src/Admin/Metaboxes.php
+#: src/Admin/Metaboxes.php:96
 msgid "CMS / Platform"
 msgstr ""
 
-#: src/Admin/Metaboxes.php
+#: src/Admin/Metaboxes.php:100
 msgid "WordPress, Laravel, OpenCart…"
 msgstr ""
 
-#: src/Admin/Metaboxes.php
+#: src/Admin/Metaboxes.php:105
 msgid "Launch Time"
 msgstr ""
 
-#: src/Admin/Metaboxes.php
+#: src/Admin/Metaboxes.php:109
 msgid "1–2 days"
 msgstr ""
 
-#: src/Admin/Metaboxes.php
+#: src/Admin/Metaboxes.php:110
 msgid "Time to deploy on client's domain."
 msgstr ""
 
-#: src/Admin/Metaboxes.php
+#: src/Admin/Metaboxes.php:115
 msgid "Status"
 msgstr ""
 
-#: src/Widget/FilterWidget.php
+#: src/Admin/Metaboxes.php:118
+#: src/Plugin.php:172
+#: templates/archive/cw_website_1a.php:27
+#: templates/archive/cw_website_1c.php:27
+#: templates/archive/cw_website_2.php:103
+#: templates/archive/cw_website_2a.php:27
+#: templates/archive/cw_website_3.php:100
+#: templates/archive/cw_website_3a.php:27
+#: templates/archive/cw_website_3b.php:27
+#: templates/single-cw_website.php:29
+#: templates/single/cw_website_1.php:29
+#: templates/single/cw_website_2.php:29
+msgid "For Sale"
+msgstr ""
+
+#: src/Admin/Metaboxes.php:119
+#: src/Plugin.php:174
+#: templates/archive/cw_website_1a.php:29
+#: templates/archive/cw_website_1c.php:29
+#: templates/archive/cw_website_2.php:105
+#: templates/archive/cw_website_2a.php:29
+#: templates/archive/cw_website_3.php:102
+#: templates/archive/cw_website_3a.php:29
+#: templates/archive/cw_website_3b.php:29
+#: templates/single-cw_website.php:31
+#: templates/single/cw_website_1.php:31
+#: templates/single/cw_website_2.php:31
+msgid "Reserved"
+msgstr ""
+
+#: src/Admin/Metaboxes.php:120
+#: src/Plugin.php:173
+#: templates/archive/cw_website_1a.php:28
+#: templates/archive/cw_website_1c.php:28
+#: templates/archive/cw_website_2.php:104
+#: templates/archive/cw_website_2a.php:28
+#: templates/archive/cw_website_3.php:101
+#: templates/archive/cw_website_3a.php:28
+#: templates/archive/cw_website_3b.php:28
+#: templates/single-cw_website.php:30
+#: templates/single/cw_website_1.php:30
+#: templates/single/cw_website_2.php:30
+msgid "Sold"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:18
+#: src/Admin/SettingsPage.php:19
+msgid "Templates"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:31
+msgid "Archive Template"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:32
+msgid "Single Template"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:84
+msgid "Websites For Sale — Templates"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:89
+msgid "Save Settings"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:117
+msgid "Template"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:129
+msgid "IT Cards"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:130
+msgid "3-column grid, browser bar, hover-scroll screenshot."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:134
+msgid "Browser Frame"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:135
+msgid "Light card with browser bar, colored category badge, price + term footer, indigo buttons."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:139
+msgid "Price Pill + Dark Footer"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:140
+msgid "White card, price pill on screenshot, dot+category row, two-column dark footer buttons."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:144
+msgid "Scroll Rows"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:145
+msgid "Alternating rows — large screenshot left/right with details."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:149
+msgid "Price Pill + Icon Button"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:150
+msgid "White card, price pill on screenshot, dot+category row, wide indigo button + square icon button."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:154
+msgid "Overlay Cards"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:155
+msgid "3-column overlay grid — title fixed at bottom, description slides in on hover."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:159
+msgid "Dark — Violet Accent"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:160
+msgid "Dark page (#0b1120), dark cards, dot+category row, lavender price, violet button + square icon."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:164
+msgid "Dark — White Button"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:165
+msgid "Dark page, inset rounded screenshot with category badge, white primary button + outline preview."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:174
+msgid "Sidebar"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:175
+msgid "Screenshot on the left (8 cols), sticky info card on the right (4 cols)."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:179
+msgid "Wide"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:180
+msgid "Full-width screenshot, price and details below in a two-column row."
+msgstr ""
+
+#: src/Plugin.php:24
+#: src/Plugin.php:26
+#: src/Plugin.php:39
+msgid "Websites For Sale"
+msgstr ""
+
+#: src/Plugin.php:25
+msgid "Website"
+msgstr ""
+
+#: src/Plugin.php:27
+msgid "All Websites"
+msgstr ""
+
+#: src/Plugin.php:28
+msgid "Add New"
+msgstr ""
+
+#: src/Plugin.php:29
+msgid "Add New Website"
+msgstr ""
+
+#: src/Plugin.php:30
+msgid "Edit Website"
+msgstr ""
+
+#: src/Plugin.php:31
+msgid "New Website"
+msgstr ""
+
+#: src/Plugin.php:32
+msgid "View Website"
+msgstr ""
+
+#: src/Plugin.php:33
+msgid "Search Websites"
+msgstr ""
+
+#: src/Plugin.php:34
+msgid "No websites found"
+msgstr ""
+
+#: src/Plugin.php:35
+msgid "No websites found in trash"
+msgstr ""
+
+#: src/Plugin.php:70
+#: src/Plugin.php:72
+#: src/Widget/FilterWidget.php:19
+#: src/Widget/FilterWidget.php:102
+msgid "Categories"
+msgstr ""
+
+#: src/Plugin.php:73
+#: templates/single-cw_website.php:138
+#: templates/single/cw_website_1.php:138
+#: templates/single/cw_website_2.php:124
+msgid "Category"
+msgstr ""
+
+#: src/Plugin.php:74
+msgid "All Categories"
+msgstr ""
+
+#: src/Plugin.php:75
+msgid "Add New Category"
+msgstr ""
+
+#: src/Plugin.php:76
+msgid "Edit Category"
+msgstr ""
+
+#: src/Plugin.php:77
+msgid "New Category"
+msgstr ""
+
+#: src/Plugin.php:78
+msgid "Search Categories"
+msgstr ""
+
+#: src/Plugin.php:79
+msgid "No categories found"
+msgstr ""
+
+#: src/Plugin.php:89
+#: src/Plugin.php:91
+#: src/Widget/FilterWidget.php:20
+#: src/Widget/FilterWidget.php:103
+msgid "Tags"
+msgstr ""
+
+#: src/Plugin.php:92
+msgid "Tag"
+msgstr ""
+
+#: src/Plugin.php:93
+msgid "All Tags"
+msgstr ""
+
+#: src/Plugin.php:94
+msgid "Add New Tag"
+msgstr ""
+
+#: src/Plugin.php:95
+msgid "Edit Tag"
+msgstr ""
+
+#: src/Plugin.php:96
+msgid "New Tag"
+msgstr ""
+
+#: src/Plugin.php:97
+msgid "Search Tags"
+msgstr ""
+
+#: src/Plugin.php:98
+msgid "No tags found"
+msgstr ""
+
+#: src/Plugin.php:217
+#: src/Plugin.php:219
+#: templates/archive/cw_website_1a.php:137
+#: templates/archive/cw_website_1c.php:122
+#: templates/archive/cw_website_2.php:198
+#: templates/archive/cw_website_2a.php:121
+#: templates/archive/cw_website_3.php:157
+#: templates/archive/cw_website_3a.php:128
+#: templates/archive/cw_website_3b.php:103
+#: templates/single-cw_website.php:172
+#: templates/single/cw_website_1.php:172
+msgid "Preview"
+msgstr ""
+
+#: src/Widget/FilterWidget.php:10
 msgid "Websites: Categories & Tags"
 msgstr ""
 
-#: src/Widget/FilterWidget.php
+#: src/Widget/FilterWidget.php:11
 msgid "Navigation by website categories and tags."
 msgstr ""
 
-#: src/Widget/FilterWidget.php
-#: templates/archive-cw_website.php
-#: templates/archive/cw_website_1.php
-#: templates/archive/cw_website_2.php
-#: templates/archive/cw_website_3.php
+#: src/Widget/FilterWidget.php:47
+#: templates/archive-cw_website.php:62
+#: templates/archive/cw_website_1.php:62
+#: templates/archive/cw_website_1a.php:59
+#: templates/archive/cw_website_1c.php:54
+#: templates/archive/cw_website_2.php:53
+#: templates/archive/cw_website_2a.php:54
+#: templates/archive/cw_website_3.php:45
+#: templates/archive/cw_website_3a.php:60
+#: templates/archive/cw_website_3b.php:41
 msgid "All"
 msgstr ""
 
-#: src/Widget/FilterWidget.php
-#: templates/archive-cw_website.php
-#: templates/archive/cw_website_1.php
-#: templates/archive/cw_website_2.php
-#: templates/archive/cw_website_3.php
-msgid "All tags"
-msgstr ""
-
-#: src/Widget/FilterWidget.php
+#: src/Widget/FilterWidget.php:106
 msgid "Widget Title:"
 msgstr ""
 
-#: src/Widget/FilterWidget.php
+#: src/Widget/FilterWidget.php:117
 msgid "Show categories"
 msgstr ""
 
-#: src/Widget/FilterWidget.php
+#: src/Widget/FilterWidget.php:120
 msgid "Categories section title:"
 msgstr ""
 
-#: src/Widget/FilterWidget.php
+#: src/Widget/FilterWidget.php:131
 msgid "Show tags"
 msgstr ""
 
-#: src/Widget/FilterWidget.php
+#: src/Widget/FilterWidget.php:134
 msgid "Tags section title:"
 msgstr ""
 
-#: templates/archive-cw_website.php
-#: templates/archive/cw_website_1.php
-#: templates/archive/cw_website_2.php
-#: templates/archive/cw_website_3.php
+#: templates/archive-cw_website.php:77
+#: templates/archive/cw_website_1.php:77
+#: templates/archive/cw_website_1a.php:68
+#: templates/archive/cw_website_1c.php:63
+#: templates/archive/cw_website_2.php:68
+#: templates/archive/cw_website_2a.php:63
+#: templates/archive/cw_website_3.php:60
+#: templates/archive/cw_website_3a.php:69
+#: templates/archive/cw_website_3b.php:50
+msgid "All tags"
+msgstr ""
+
+#: templates/archive-cw_website.php:103
+#: templates/archive/cw_website_1.php:103
+#: templates/archive/cw_website_1a.php:154
+#: templates/archive/cw_website_1c.php:139
+#: templates/archive/cw_website_2.php:214
+#: templates/archive/cw_website_2a.php:137
+#: templates/archive/cw_website_3.php:185
+#: templates/archive/cw_website_3a.php:143
+#: templates/archive/cw_website_3b.php:118
 msgid "No websites found."
 msgstr ""
 
-#: templates/archive/cw_website_2.php
+#: templates/archive/cw_website_1a.php:115
+#: templates/archive/cw_website_1c.php:104
+#: templates/archive/cw_website_2a.php:104
+#: templates/archive/cw_website_3a.php:107
+msgid "Live Preview"
+msgstr ""
+
+#: templates/archive/cw_website_1a.php:132
+msgid "Term:"
+msgstr ""
+
+#: templates/archive/cw_website_1a.php:135
+#: templates/archive/cw_website_1c.php:120
+#: templates/archive/cw_website_2a.php:119
+#: templates/archive/cw_website_3a.php:126
+#: templates/archive/cw_website_3b.php:101
+msgid "Details"
+msgstr ""
+
+#: templates/archive/cw_website_2.php:164
+#: templates/single-cw_website.php:126
+#: templates/single/cw_website_1.php:126
+#: templates/single/cw_website_2.php:112
 msgid "Platform"
 msgstr ""
 
-#: templates/archive/cw_website_2.php
+#: templates/archive/cw_website_2.php:170
+#: templates/single-cw_website.php:132
+#: templates/single/cw_website_1.php:132
+#: templates/single/cw_website_2.php:118
 msgid "Launch time"
 msgstr ""
 
-#: templates/archive/cw_website_2.php
+#: templates/archive/cw_website_2.php:188
 msgid "View details"
 msgstr ""
 
-#: templates/archive/cw_website_3.php
+#: templates/archive/cw_website_3.php:147
 msgid "More details"
 msgstr ""
 
-#: templates/single-cw_website.php
-#: templates/single/cw_website_1.php
-#: templates/single/cw_website_2.php
+#: templates/single-cw_website.php:94
+#: templates/single/cw_website_1.php:94
+#: templates/single/cw_website_2.php:90
 msgid "Preview website"
 msgstr ""
 
-#: templates/single-cw_website.php
-#: templates/single/cw_website_1.php
-#: templates/single/cw_website_2.php
+#: templates/single-cw_website.php:158
+#: templates/single/cw_website_1.php:158
+#: templates/single/cw_website_2.php:94
+#, php-format
 msgid "Buy website: %s"
 msgstr ""
 
-#: templates/single-cw_website.php
-#: templates/single/cw_website_1.php
-#: templates/single/cw_website_2.php
+#: templates/single-cw_website.php:160
+#: templates/single/cw_website_1.php:160
+#: templates/single/cw_website_2.php:96
 msgid "Buy this website"
-msgstr ""
-
-#: templates/single-cw_website.php
-#: templates/single/cw_website_1.php
-#: templates/single/cw_website_2.php
-msgid "Category"
 msgstr ""
