@@ -23,6 +23,9 @@ $tag_terms = get_terms( [ 'taxonomy' => 'website_tag', 'hide_empty' => true, 'or
 $has_tags  = ! empty( $tag_terms ) && ! is_wp_error( $tag_terms );
 $grid_gap  = class_exists( 'Codeweber_Options' ) ? Codeweber_Options::style( 'grid-gap' ) : 'gx-md-8 gy-10 gy-md-13';
 
+$card_radius = class_exists( 'Codeweber_Options' ) ? Codeweber_Options::style( 'card-radius' ) : 'rounded';
+$btn_style   = class_exists( 'Codeweber_Options' ) ? Codeweber_Options::style( 'button' ) : '';
+
 $status_cfg = [
 	'for_sale' => [ 'label' => esc_html__( 'For Sale', 'cw-websites-for-sale' ), 'class' => 'bg-success' ],
 	'sold'     => [ 'label' => esc_html__( 'Sold', 'cw-websites-for-sale' ),     'class' => 'bg-secondary' ],
@@ -74,33 +77,36 @@ $status_cfg = [
 			$st          = $status_cfg[ $status ] ?? $status_cfg['for_sale'];
 		?>
 		<div class="col-md-6 col-xl-4">
-			<div class="rounded-3 overflow-hidden d-flex flex-column h-100 shadow-lg bg-dark">
-				<div class="position-relative overflow-hidden mx-2 mt-2 rounded-3" style="height:285px">
+			<div class="card h-100 bg-dark shadow-lg <?php echo esc_attr( $card_radius ); ?>">
+				<div class="position-relative overflow-hidden mx-2 mt-2 <?php echo esc_attr( $card_radius ); ?>" style="height:285px">
 					<?php if ( $screenshot ) :
-						echo wp_get_attachment_image( $screenshot, 'full', false, [ 'alt' => esc_attr( $title ), 'class' => 'w-100 h-100 object-fit-cover object-position-top' ] );
+						echo wp_get_attachment_image( $screenshot, 'full', false, [
+							'alt'   => esc_attr( $title ),
+							'class' => 'w-100 h-100 object-fit-cover object-position-top',
+						] );
 					else : ?>
-					<div class="w-100 h-100 bg-secondary opacity-25"></div>
+					<div class="w-100 h-100 bg-ash"></div>
 					<?php endif; ?>
 					<?php if ( $cat_name ) : ?>
-					<span class="badge position-absolute top-0 start-0 m-2 fw-bold" style="background:<?php echo esc_attr( $cat_c['bg'] ); ?>;color:<?php echo esc_attr( $cat_c['fg'] ); ?>;"><?php echo esc_html( $cat_name ); ?></span>
+					<span class="badge position-absolute top-0 start-0 m-2" style="background:<?php echo esc_attr( $cat_c['bg'] ); ?>;color:<?php echo esc_attr( $cat_c['fg'] ); ?>;"><?php echo esc_html( $cat_name ); ?></span>
 					<?php endif; ?>
 					<span class="badge <?php echo esc_attr( $st['class'] ); ?> position-absolute top-0 end-0 m-2"><?php echo $st['label']; ?></span>
 				</div>
-				<div class="d-flex flex-column gap-3 p-4 flex-grow-1">
-					<h3 class="mb-0 fw-bold fs-5 text-white"><?php echo esc_html( $title ); ?></h3>
-					<div class="d-flex align-items-baseline gap-2">
-						<?php if ( $price ) : ?>
-						<span class="fw-bold fs-4 text-primary"><?php echo esc_html( $price ); ?> ₽</span>
-						<?php endif; ?>
-						<?php if ( $launch_time ) : ?>
-						<span class="small fw-semibold text-muted">· <?php echo esc_html( $launch_time ); ?></span>
-						<?php endif; ?>
+				<div class="card-body p-4">
+					<div class="post-header">
+						<h3 class="post-title h5 mb-2 text-white"><a href="<?php echo esc_url( $permalink ); ?>" class="link-inverse"><?php echo esc_html( $title ); ?></a></h3>
+						<p class="price text-primary mb-0">
+							<ins><span class="amount"><?php echo $price ? esc_html( $price ) . ' ₽' : ''; ?></span></ins>
+							<?php if ( $launch_time ) : ?>
+							<span class="text-muted fs-sm ms-2">· <?php echo esc_html( $launch_time ); ?></span>
+							<?php endif; ?>
+						</p>
 					</div>
 				</div>
-				<div class="d-flex gap-2 px-4 pb-4">
-					<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-light flex-grow-1"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
+				<div class="card-footer d-flex gap-2 bg-transparent border-0 pt-0 px-4 pb-4">
+					<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-white<?php echo esc_attr( $btn_style ); ?> has-ripple flex-grow-1"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
 					<?php if ( $website_url ) : ?>
-					<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" class="btn btn-outline-secondary"><i class="uil uil-play-circle me-1"></i><?php esc_html_e( 'Preview', 'cw-websites-for-sale' ); ?></a>
+					<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" class="btn btn-ash<?php echo esc_attr( $btn_style ); ?> has-ripple"><i class="uil uil-play-circle me-1"></i><?php esc_html_e( 'Preview', 'cw-websites-for-sale' ); ?></a>
 					<?php endif; ?>
 				</div>
 			</div>
