@@ -2,7 +2,7 @@
 /**
  * Plugin Name: CW Websites For Sale
  * Description: Website sales catalog: IT-style cards with hover-scroll screenshots, device preview modal, category and tag AJAX filters.
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      CodeWeber
  * Text Domain: cw-websites-for-sale
  * Domain Path: /languages
@@ -10,7 +10,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'CW_WFS_VERSION', '1.0.0' );
+define( 'CW_WFS_VERSION', '1.0.1' );
 define( 'CW_WFS_FILE',    __FILE__ );
 define( 'CW_WFS_DIR',     plugin_dir_path( __FILE__ ) );
 define( 'CW_WFS_URL',     plugin_dir_url( __FILE__ ) );
