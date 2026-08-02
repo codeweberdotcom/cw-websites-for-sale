@@ -71,11 +71,11 @@ if ( $display['title_length'] > 0 && mb_strlen( $title ) > $display['title_lengt
 }
 
 $title_tag   = isset( $display['title_tag'] ) ? sanitize_html_class( $display['title_tag'] ) : 'h3';
-$title_class = ! empty( $display['title_class'] ) ? esc_attr( $display['title_class'] ) : 'mb-0 fw-bold text-white';
+$title_class = ! empty( $display['title_class'] ) ? esc_attr( $display['title_class'] ) : 'mb-0 fw-bold text-dark';
 $lift_class  = ! empty( $template_args['enable_lift'] ) ? ';transform:translateY(-4px)' : '';
 ?>
 
-<article class="h-100 bg-dark<?php echo $border_radius ? ' ' . esc_attr( $border_radius ) : ''; ?>" style="border:1px solid #26324a;overflow:hidden;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s,border-color .18s<?php echo $lift_class; ?>;" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 22px 48px rgba(0,0,0,.55)';this.style.borderColor='#818cf8'" onmouseleave="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#26324a'">
+<article class="card h-100<?php echo $border_radius ? ' ' . esc_attr( $border_radius ) : ''; ?>" style="overflow:hidden;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s,border-color .18s<?php echo $lift_class; ?>;" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,.15)';this.style.borderColor='#818cf8'" onmouseleave="this.style.transform='';this.style.boxShadow='';this.style.borderColor=''">
 
 	<div class="position-relative overflow-hidden" style="height:178px;">
 		<?php if ( $screenshot ) :

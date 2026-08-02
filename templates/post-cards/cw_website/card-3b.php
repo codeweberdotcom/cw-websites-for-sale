@@ -72,11 +72,11 @@ if ( $display['title_length'] > 0 && mb_strlen( $title ) > $display['title_lengt
 }
 
 $title_tag   = isset( $display['title_tag'] ) ? sanitize_html_class( $display['title_tag'] ) : 'h3';
-$title_class = ! empty( $display['title_class'] ) ? esc_attr( $display['title_class'] ) : 'post-title h5 mb-0 text-white';
+$title_class = ! empty( $display['title_class'] ) ? esc_attr( $display['title_class'] ) : 'post-title h5 mb-0 text-dark';
 $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 ?>
 
-<article class="card h-100 bg-dark shadow-lg<?php echo $border_radius ? ' ' . esc_attr( $border_radius ) : ''; echo $lift_class; ?>">
+<article class="card h-100 shadow-sm<?php echo $border_radius ? ' ' . esc_attr( $border_radius ) : ''; echo $lift_class; ?>">
 
 	<div class="position-relative overflow-hidden mx-2 mt-2<?php echo $border_radius ? ' ' . esc_attr( $border_radius ) : ''; ?>" style="height:220px;">
 		<?php if ( $screenshot ) :
@@ -98,7 +98,7 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 		<div class="post-header">
 			<?php if ( $display['show_title'] && $title ) : ?>
 			<<?php echo esc_attr( $title_tag ); ?> class="<?php echo esc_attr( $title_class ); ?>">
-				<a href="<?php echo esc_url( $permalink ); ?>" class="link-inverse"><?php echo esc_html( $title ); ?></a>
+				<a href="<?php echo esc_url( $permalink ); ?>" class="link-dark"><?php echo esc_html( $title ); ?></a>
 			</<?php echo esc_attr( $title_tag ); ?>>
 			<?php endif; ?>
 			<p class="price text-primary fs-22 fw-bold mb-0">
@@ -111,7 +111,7 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 	</div>
 
 	<div class="card-footer d-flex gap-2 bg-transparent border-0 pt-0 px-4 pb-4">
-		<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-outline-white<?php echo esc_attr( $btn_style ); ?> has-ripple flex-grow-1"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
+		<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-outline-secondary<?php echo esc_attr( $btn_style ); ?> has-ripple flex-grow-1"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
 		<?php if ( $website_url ) : ?>
 		<button type="button" class="btn btn-outline-primary<?php echo esc_attr( $btn_style ); ?> has-ripple"
 			data-bs-toggle="modal"

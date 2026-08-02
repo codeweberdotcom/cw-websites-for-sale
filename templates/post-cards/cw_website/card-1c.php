@@ -114,10 +114,10 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 		<?php endif; ?>
 	</div>
 
-	<div class="bg-dark mt-auto" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;">
-		<a href="<?php echo esc_url( $permalink ); ?>" class="bg-dark text-white text-decoration-none fw-bold" style="display:flex;align-items:center;justify-content:center;height:48px;font-size:14px;" onmouseenter="this.style.opacity='.75'" onmouseleave="this.style.opacity=''"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
+	<div class="bg-soft-ash mt-auto" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;">
+		<a href="<?php echo esc_url( $permalink ); ?>" class="bg-soft-ash text-dark text-decoration-none fw-bold" style="display:flex;align-items:center;justify-content:center;height:48px;font-size:14px;" onmouseenter="this.style.opacity='.75'" onmouseleave="this.style.opacity=''"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
 		<?php if ( $website_url ) : ?>
-		<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" class="bg-dark text-muted text-decoration-none fw-bold border-start border-secondary" style="display:flex;align-items:center;justify-content:center;height:48px;font-size:14px;" onmouseenter="this.style.opacity='.75'" onmouseleave="this.style.opacity=''"><i class="uil uil-play-circle me-2"></i><?php esc_html_e( 'Preview', 'cw-websites-for-sale' ); ?></a>
+		<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" class="bg-soft-ash text-muted text-decoration-none fw-bold border-start" style="display:flex;align-items:center;justify-content:center;height:48px;font-size:14px;" onmouseenter="this.style.opacity='.75'" onmouseleave="this.style.opacity=''"><i class="uil uil-play-circle me-2"></i><?php esc_html_e( 'Preview', 'cw-websites-for-sale' ); ?></a>
 		<?php else : ?>
 		<span></span>
 		<?php endif; ?>
