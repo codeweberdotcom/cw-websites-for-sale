@@ -25,9 +25,14 @@ $display = function_exists( 'cw_get_post_card_display_settings' )
 	] );
 
 $template_args = wp_parse_args( $template_args ?? [], [
-	'border_radius' => ( class_exists( 'Codeweber_Options' ) ? Codeweber_Options::style( 'card-radius' ) : '' ) ?: 'rounded',
+	'border_radius' => 'rounded',
 	'enable_lift'   => false,
 ] );
+
+// Redux card-radius overrides block attribute (keeps cards consistent with the site style).
+$border_radius = class_exists( 'Codeweber_Options' )
+	? ( Codeweber_Options::style( 'card-radius' ) ?: $template_args['border_radius'] )
+	: $template_args['border_radius'];
 
 $post_id = $post_data['id'] ?? 0;
 $icon    = $post_id ? ( get_post_meta( $post_id, '_module_icon', true ) ?: 'check-circle' ) : 'check-circle';
@@ -65,11 +70,10 @@ if ( ! empty( $display['show_excerpt'] ) && $display['excerpt_length'] > 0 ) {
 $title_tag   = isset( $display['title_tag'] ) ? sanitize_html_class( $display['title_tag'] ) : 'h3';
 $title_class = ! empty( $display['title_class'] ) ? esc_attr( $display['title_class'] ) : 'h5 mb-3';
 
-$lift_class    = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
-$radius_class  = $template_args['border_radius'] ? ' ' . esc_attr( $template_args['border_radius'] ) : '';
+$lift_class = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 ?>
 
-<article class="card shadow-lg h-100<?php echo $radius_class . $lift_class; ?>">
+<article class="card shadow-lg h-100<?php echo $border_radius ? ' ' . esc_attr( $border_radius ) : ''; echo $lift_class; ?>">
 	<div class="card-body p-6 d-flex flex-column">
 
 		<div class="icon btn btn-circle btn-lg btn-soft-<?php echo esc_attr( $color_name ); ?> pe-none mb-5">
