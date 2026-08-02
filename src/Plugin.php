@@ -30,6 +30,11 @@ class Plugin {
 						'description' => __( 'Card with icon, accent color and description', 'cw-websites-for-sale' ),
 						'supports'    => [ 'title', 'excerpt' ],
 					],
+					'card-sm' => [
+						'label'       => __( 'Card SM', 'cw-websites-for-sale' ),
+						'description' => __( 'Compact horizontal card: icon left, title and description right', 'cw-websites-for-sale' ),
+						'supports'    => [ 'title', 'excerpt' ],
+					],
 				],
 			];
 			return $registry;
