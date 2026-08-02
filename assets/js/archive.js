@@ -50,6 +50,8 @@
 		});
 	}
 
+	window.cwWfsInitScreenScroll = initScreenScroll;
+
 	initScreenScroll();
 
 	// ── AJAX fetch ────────────────────────────────────────────────────────────

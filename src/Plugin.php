@@ -298,7 +298,13 @@ class Plugin {
 	// ─────────────────────────────────────────────────────────────────────────
 
 	public function enqueue_scripts(): void {
-		// JS is inlined in archive-cw_website.php template (same pattern as theme's IT archive templates)
+		wp_enqueue_script(
+			'cw-wfs-archive',
+			CW_WFS_URL . 'assets/js/archive.js',
+			[],
+			CW_WFS_VERSION,
+			true
+		);
 	}
 
 	public function set_archive_per_page( \WP_Query $query ): void {
