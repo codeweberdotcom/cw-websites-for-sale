@@ -18,6 +18,61 @@ class Plugin {
 		( new Admin\ModuleMetaboxes() )->init();
 
 		$this->register_module_card_templates();
+		$this->register_website_card_templates();
+	}
+
+	private function register_website_card_templates(): void {
+		add_filter( 'codeweber_post_card_templates_registry', function ( $registry ) {
+			$registry['cw_website'] = [
+				'dir'       => 'cw_website',
+				'templates' => [
+					'card' => [
+						'label'       => __( 'Card', 'cw-websites-for-sale' ),
+						'description' => __( 'Browser-bar card: screenshot, category, price and CMS badge', 'cw-websites-for-sale' ),
+						'supports'    => [ 'title' ],
+					],
+					'card-1a' => [
+						'label'       => __( 'Card 1a', 'cw-websites-for-sale' ),
+						'description' => __( 'Browser-bar card with colored category badge and Details / Preview buttons', 'cw-websites-for-sale' ),
+						'supports'    => [ 'title' ],
+					],
+					'card-1c' => [
+						'label'       => __( 'Card 1c', 'cw-websites-for-sale' ),
+						'description' => __( 'Price pill on screenshot, dot category, dark footer with Details / Preview', 'cw-websites-for-sale' ),
+						'supports'    => [ 'title' ],
+					],
+					'card-2a' => [
+						'label'       => __( 'Card 2a', 'cw-websites-for-sale' ),
+						'description' => __( 'Price pill on screenshot, dot category, indigo Details button', 'cw-websites-for-sale' ),
+						'supports'    => [ 'title' ],
+					],
+					'card-3' => [
+						'label'       => __( 'Card 3', 'cw-websites-for-sale' ),
+						'description' => __( 'Overlay card: screenshot with hover description, tags and Preview modal', 'cw-websites-for-sale' ),
+						'supports'    => [ 'title', 'excerpt' ],
+					],
+					'card-3a' => [
+						'label'       => __( 'Card 3a', 'cw-websites-for-sale' ),
+						'description' => __( 'Dark card with violet accent, screenshot, price and Details button', 'cw-websites-for-sale' ),
+						'supports'    => [ 'title' ],
+					],
+					'card-3b' => [
+						'label'       => __( 'Card 3b', 'cw-websites-for-sale' ),
+						'description' => __( 'Dark card with inset screenshot, category / status badges, Details + Preview modal', 'cw-websites-for-sale' ),
+						'supports'    => [ 'title' ],
+					],
+				],
+			];
+			return $registry;
+		} );
+
+		add_filter( 'codeweber_post_card_template_path', function ( $path, $template_name, $post_type ) {
+			if ( $post_type !== 'cw_website' ) {
+				return $path;
+			}
+			$plugin_path = CW_WFS_DIR . 'templates/post-cards/cw_website/' . sanitize_file_name( $template_name ) . '.php';
+			return file_exists( $plugin_path ) ? $plugin_path : $path;
+		}, 10, 3 );
 	}
 
 	private function register_module_card_templates(): void {
