@@ -12,6 +12,7 @@ class Plugin {
 		add_action( 'widgets_init',       [ $this, 'register_widget' ] );
 		add_filter( 'template_include',   [ $this, 'template_include' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
+		add_action( 'pre_get_posts',      [ $this, 'set_archive_per_page' ] );
 
 		( new Admin\Metaboxes() )->init();
 		( new Admin\SettingsPage() )->init();
@@ -298,6 +299,16 @@ class Plugin {
 
 	public function enqueue_scripts(): void {
 		// JS is inlined in archive-cw_website.php template (same pattern as theme's IT archive templates)
+	}
+
+	public function set_archive_per_page( \WP_Query $query ): void {
+		if ( is_admin() || ! $query->is_main_query() || ! $query->is_post_type_archive( 'cw_website' ) ) {
+			return;
+		}
+		$per_page = (int) cw_wfs_setting( 'archive_per_page', '12' );
+		if ( $per_page > 0 ) {
+			$query->set( 'posts_per_page', $per_page );
+		}
 	}
 
 	// ─────────────────────────────────────────────────────────────────────────

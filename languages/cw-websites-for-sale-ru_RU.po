@@ -1,0 +1,62 @@
+# Russian translation for CW Websites For Sale
+# Copyright (C) 2026 CodeWeber
+# This file is distributed under the same license as the CW Websites For Sale plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: CW Websites For Sale 1.0.1\n"
+"PO-Revision-Date: 2026-08-02 00:00+0000\n"
+"Last-Translator: CodeWeber <admin@codeweber.ru>\n"
+"Language-Team: Russian\n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: cw-websites-for-sale\n"
+
+msgid "Templates"
+msgstr "Шаблоны"
+
+msgid "Archive Template"
+msgstr "Шаблон архива"
+
+msgid "Single Template"
+msgstr "Шаблон записи"
+
+msgid "Archive Layout"
+msgstr "Разметка архива"
+
+msgid "Columns"
+msgstr "Колонки"
+
+msgid "Per page"
+msgstr "На странице"
+
+msgid "Save Settings"
+msgstr "Сохранить настройки"
+
+msgid "All"
+msgstr "Все"
+
+msgid "All tags"
+msgstr "Все теги"
+
+msgid "No websites found."
+msgstr "Сайты не найдены."
+
+msgid "Show more"
+msgstr "Показать ещё"
+
+msgid "2 columns"
+msgstr "2 колонки"
+
+msgid "3 columns"
+msgstr "3 колонки"
+
+msgid "4 columns"
+msgstr "4 колонки"
+
+msgid "Template"
+msgstr "Шаблон"
+
+msgid "Websites For Sale — Templates"
+msgstr "Сайты на продажу — Шаблоны"

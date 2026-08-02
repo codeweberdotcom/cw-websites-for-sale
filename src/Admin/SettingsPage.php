@@ -34,7 +34,8 @@ class SettingsPage {
 
 		add_settings_field( 'archive_template', '', [ $this, 'render_archive_field' ], 'cw_wfs_templates', 'cw_wfs_archive' );
 		add_settings_field( 'single_template',  '', [ $this, 'render_single_field' ],  'cw_wfs_templates', 'cw_wfs_single' );
-		add_settings_field( 'archive_columns',  esc_html__( 'Columns', 'cw-websites-for-sale' ), [ $this, 'render_columns_field' ], 'cw_wfs_templates', 'cw_wfs_layout' );
+		add_settings_field( 'archive_columns',  esc_html__( 'Columns', 'cw-websites-for-sale' ), [ $this, 'render_columns_field' ],  'cw_wfs_templates', 'cw_wfs_layout' );
+		add_settings_field( 'archive_per_page', esc_html__( 'Per page', 'cw-websites-for-sale' ), [ $this, 'render_per_page_field' ], 'cw_wfs_templates', 'cw_wfs_layout' );
 	}
 
 	public function sanitize( $input ): array {
@@ -47,9 +48,12 @@ class SettingsPage {
 			'single_template' => in_array( $input['single_template'] ?? '', $single_templates )
 				? $input['single_template']
 				: '1',
-			'archive_columns' => in_array( $input['archive_columns'] ?? '', [ '2', '3', '4' ] )
+			'archive_columns'  => in_array( $input['archive_columns'] ?? '', [ '2', '3', '4' ] )
 				? $input['archive_columns']
 				: '3',
+			'archive_per_page' => in_array( $input['archive_per_page'] ?? '', [ '4', '8', '12', '16', '20', '24' ] )
+				? $input['archive_per_page']
+				: '12',
 		];
 	}
 
@@ -111,6 +115,20 @@ class SettingsPage {
 			echo '<label style="margin-right:20px;">';
 			echo '<input type="radio" name="' . esc_attr( "{$option}[archive_columns]" ) . '" value="' . esc_attr( $val ) . '"' . checked( $val, $current, false ) . '> ';
 			echo esc_html( $label );
+			echo '</label>';
+		}
+		echo '</fieldset>';
+	}
+
+	public function render_per_page_field(): void {
+		$current = cw_wfs_setting( 'archive_per_page', '12' );
+		$option  = self::OPTION;
+		$options = [ '4', '8', '12', '16', '20', '24' ];
+		echo '<fieldset>';
+		foreach ( $options as $val ) {
+			echo '<label style="margin-right:16px;">';
+			echo '<input type="radio" name="' . esc_attr( "{$option}[archive_per_page]" ) . '" value="' . esc_attr( $val ) . '"' . checked( $val, $current, false ) . '> ';
+			echo esc_html( $val );
 			echo '</label>';
 		}
 		echo '</fieldset>';
