@@ -13,6 +13,162 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Domain: cw-websites-for-sale\n"
 
+msgid "CW Websites For Sale"
+msgstr "CW Сайты на продажу"
+
+msgid "Websites For Sale"
+msgstr "Сайты на продажу"
+
+msgid "Websites For Sale — Templates"
+msgstr "Сайты на продажу — Шаблоны"
+
+msgid "Website sales catalog: IT-style cards with hover-scroll screenshots, device preview modal, category and tag AJAX filters."
+msgstr "Каталог сайтов: карточки с hover-скроллом скриншотов, превью в модалке, AJAX-фильтры по категориям и тегам."
+
+msgid "Add New Website"
+msgstr "Добавить сайт"
+
+msgid "Add New"
+msgstr "Добавить"
+
+msgid "New Website"
+msgstr "Новый сайт"
+
+msgid "Edit Website"
+msgstr "Редактировать сайт"
+
+msgid "View Website"
+msgstr "Просмотреть сайт"
+
+msgid "Search Websites"
+msgstr "Найти сайты"
+
+msgid "All Websites"
+msgstr "Все сайты"
+
+msgid "No websites found"
+msgstr "Сайты не найдены"
+
+msgid "No websites found in trash"
+msgstr "В корзине нет сайтов"
+
+msgid "No websites found."
+msgstr "Сайты не найдены."
+
+msgid "Website"
+msgstr "Сайт"
+
+msgid "Website Details"
+msgstr "Детали сайта"
+
+msgid "Website Details"
+msgstr "Детали сайта"
+
+msgid "Category"
+msgstr "Категория"
+
+msgid "Categories"
+msgstr "Категории"
+
+msgid "All Categories"
+msgstr "Все категории"
+
+msgid "Add New Category"
+msgstr "Добавить категорию"
+
+msgid "New Category"
+msgstr "Новая категория"
+
+msgid "Edit Category"
+msgstr "Редактировать категорию"
+
+msgid "Search Categories"
+msgstr "Найти категории"
+
+msgid "No categories found"
+msgstr "Категории не найдены"
+
+msgid "Tag"
+msgstr "Тег"
+
+msgid "Tags"
+msgstr "Теги"
+
+msgid "All Tags"
+msgstr "Все теги"
+
+msgid "Add New Tag"
+msgstr "Добавить тег"
+
+msgid "New Tag"
+msgstr "Новый тег"
+
+msgid "Edit Tag"
+msgstr "Редактировать тег"
+
+msgid "Search Tags"
+msgstr "Найти теги"
+
+msgid "No tags found"
+msgstr "Теги не найдены"
+
+msgid "Module"
+msgstr "Модуль"
+
+msgid "Modules"
+msgstr "Модули"
+
+msgid "Add New Module"
+msgstr "Добавить модуль"
+
+msgid "New Module"
+msgstr "Новый модуль"
+
+msgid "Edit Module"
+msgstr "Редактировать модуль"
+
+msgid "Search Modules"
+msgstr "Найти модули"
+
+msgid "All Modules"
+msgstr "Все модули"
+
+msgid "No modules found"
+msgstr "Модули не найдены"
+
+msgid "No modules found in trash"
+msgstr "В корзине нет модулей"
+
+msgid "Module Categories"
+msgstr "Категории модулей"
+
+msgid "Module Category"
+msgstr "Категория модуля"
+
+msgid "Module Settings"
+msgstr "Настройки модуля"
+
+msgid "Websites: Categories & Tags"
+msgstr "Сайты: категории и теги"
+
+msgid "Navigation by website categories and tags."
+msgstr "Навигация по категориям и тегам сайтов."
+
+msgid "All"
+msgstr "Все"
+
+msgid "All tags"
+msgstr "Все теги"
+
+msgid "Show more"
+msgstr "Показать ещё"
+
+msgid "Show categories"
+msgstr "Показать категории"
+
+msgid "Show tags"
+msgstr "Показать теги"
+
 msgid "Templates"
 msgstr "Шаблоны"
 
@@ -28,24 +184,6 @@ msgstr "Разметка архива"
 msgid "Columns"
 msgstr "Колонки"
 
-msgid "Per page"
-msgstr "На странице"
-
-msgid "Save Settings"
-msgstr "Сохранить настройки"
-
-msgid "All"
-msgstr "Все"
-
-msgid "All tags"
-msgstr "Все теги"
-
-msgid "No websites found."
-msgstr "Сайты не найдены."
-
-msgid "Show more"
-msgstr "Показать ещё"
-
 msgid "2 columns"
 msgstr "2 колонки"
 
@@ -55,8 +193,230 @@ msgstr "3 колонки"
 msgid "4 columns"
 msgstr "4 колонки"
 
+msgid "Per page"
+msgstr "На странице"
+
+msgid "Save Settings"
+msgstr "Сохранить"
+
 msgid "Template"
 msgstr "Шаблон"
 
-msgid "Websites For Sale — Templates"
-msgstr "Сайты на продажу — Шаблоны"
+msgid "IT Cards"
+msgstr "IT-карточки"
+
+msgid "3-column grid, browser bar, hover-scroll screenshot."
+msgstr "3-колоночная сетка, браузерная строка, hover-скролл скриншота."
+
+msgid "Browser Frame"
+msgstr "Браузерная рамка"
+
+msgid "Light card with browser bar, colored category badge, price + term footer, indigo buttons."
+msgstr "Светлая карточка с браузерной строкой, цветным бейджем категории, ценой и кнопками."
+
+msgid "Price Pill + Dark Footer"
+msgstr "Цена + тёмный футер"
+
+msgid "White card, price pill on screenshot, dot+category row, two-column dark footer buttons."
+msgstr "Белая карточка, пилюля цены на скриншоте, тёмный двухколоночный футер."
+
+msgid "Price Pill + Icon Button"
+msgstr "Цена + иконка-кнопка"
+
+msgid "White card, price pill on screenshot, dot+category row, wide indigo button + square icon button."
+msgstr "Белая карточка, пилюля цены на скриншоте, широкая кнопка + иконка."
+
+msgid "Scroll Rows"
+msgstr "Строки со скроллом"
+
+msgid "Alternating rows — large screenshot left/right with details."
+msgstr "Чередующиеся строки — большой скриншот слева/справа с деталями."
+
+msgid "Overlay Cards"
+msgstr "Оверлей-карточки"
+
+msgid "3-column overlay grid — title fixed at bottom, description slides in on hover."
+msgstr "3-колоночная сетка — заголовок внизу, описание появляется при наведении."
+
+msgid "Dark — Violet Accent"
+msgstr "Тёмная — фиолетовый акцент"
+
+msgid "Dark page (#0b1120), dark cards, dot+category row, lavender price, violet button + square icon."
+msgstr "Тёмная страница, тёмные карточки, лавандовая цена, фиолетовая кнопка."
+
+msgid "Dark — White Button"
+msgstr "Тёмная — белая кнопка"
+
+msgid "Dark page, inset rounded screenshot with category badge, white primary button + outline preview."
+msgstr "Тёмная страница, вставной скриншот с бейджем, белая кнопка + превью."
+
+msgid "Sidebar"
+msgstr "С боковой панелью"
+
+msgid "Screenshot on the left (8 cols), sticky info card on the right (4 cols)."
+msgstr "Скриншот слева (8 колонок), фиксированная карточка справа (4 колонки)."
+
+msgid "Wide"
+msgstr "Широкий"
+
+msgid "Full-width screenshot, price and details below in a two-column row."
+msgstr "Полноширинный скриншот, цена и детали ниже в двух колонках."
+
+msgid "Price"
+msgstr "Цена"
+
+msgid "e.g. 50 000 ₽"
+msgstr "например, 50 000 ₽"
+
+msgid "Status"
+msgstr "Статус"
+
+msgid "For Sale"
+msgstr "Продаётся"
+
+msgid "Sold"
+msgstr "Продан"
+
+msgid "Reserved"
+msgstr "Зарезервирован"
+
+msgid "Screenshot"
+msgstr "Скриншот"
+
+msgid "Full-height page screenshot — used for hover-scroll effect."
+msgstr "Полноразмерный скриншот страницы — используется для hover-скролла."
+
+msgid "Select screenshot"
+msgstr "Выбрать скриншот"
+
+msgid "Demo URL"
+msgstr "URL сайта"
+
+msgid "Shown in browser bar and iframe preview."
+msgstr "Отображается в браузерной строке и превью."
+
+msgid "CMS / Platform"
+msgstr "CMS / платформа"
+
+msgid "WordPress, Laravel, OpenCart…"
+msgstr "WordPress, Laravel, OpenCart…"
+
+msgid "Launch time"
+msgstr "Время запуска"
+
+msgid "Launch Time"
+msgstr "Время запуска"
+
+msgid "Time to deploy on client's domain."
+msgstr "Время развёртывания на домене клиента."
+
+msgid "1–2 days"
+msgstr "1–2 дня"
+
+msgid "Platform"
+msgstr "Платформа"
+
+msgid "Details"
+msgstr "Подробнее"
+
+msgid "More details"
+msgstr "Подробнее"
+
+msgid "View details"
+msgstr "Подробнее"
+
+msgid "Preview"
+msgstr "Превью"
+
+msgid "Preview website"
+msgstr "Просмотреть сайт"
+
+msgid "Live Preview"
+msgstr "Открыть сайт"
+
+msgid "Buy this website"
+msgstr "Купить этот сайт"
+
+msgid "Buy website: %s"
+msgstr "Купить сайт: %s"
+
+msgid "Remove"
+msgstr "Удалить"
+
+msgid "Icon"
+msgstr "Иконка"
+
+msgid "Color"
+msgstr "Цвет"
+
+msgid "Accent color for this module (hex)."
+msgstr "Акцентный цвет модуля (hex)."
+
+msgid "Search icons…"
+msgstr "Поиск иконки…"
+
+msgid "Unicons icon used in cards and blocks."
+msgstr "Иконка Unicons для карточек и блоков."
+
+msgid "Categories section title:"
+msgstr "Заголовок раздела категорий:"
+
+msgid "Tags section title:"
+msgstr "Заголовок раздела тегов:"
+
+msgid "Widget Title:"
+msgstr "Заголовок виджета:"
+
+msgid "Term:"
+msgstr "Срок:"
+
+msgid "— select site —"
+msgstr "— выберите сайт —"
+
+msgid "Card"
+msgstr "Карточка"
+
+msgid "Card 1a"
+msgstr "Карточка 1a"
+
+msgid "Card 1c"
+msgstr "Карточка 1c"
+
+msgid "Card 2a"
+msgstr "Карточка 2a"
+
+msgid "Card 3a"
+msgstr "Карточка 3a"
+
+msgid "Card 3b"
+msgstr "Карточка 3b"
+
+msgid "Card SM"
+msgstr "Карточка SM"
+
+msgid "Browser-bar card: screenshot, category, price and CMS badge"
+msgstr "Карточка с браузерной строкой: скриншот, категория, цена и бейдж CMS"
+
+msgid "Browser-bar card with colored category badge and Details / Preview buttons"
+msgstr "Карточка с браузерной строкой, цветным бейджем категории и кнопками"
+
+msgid "Price pill on screenshot, dot category, dark footer with Details / Preview"
+msgstr "Пилюля цены на скриншоте, точка-категория, тёмный футер с кнопками"
+
+msgid "Price pill on screenshot, dot category, indigo Details button"
+msgstr "Пилюля цены на скриншоте, точка-категория, индиго-кнопка"
+
+msgid "Dark card with violet accent, screenshot, price and Details button"
+msgstr "Тёмная карточка с фиолетовым акцентом, скриншотом и кнопкой"
+
+msgid "Dark card with inset screenshot, category / status badges, Details + Preview modal"
+msgstr "Тёмная карточка со вставным скриншотом, бейджами и превью"
+
+msgid "Compact horizontal card: icon left, title and description right"
+msgstr "Компактная горизонтальная карточка: иконка слева, заголовок и описание справа"
+
+msgid "Card with icon, accent color and description"
+msgstr "Карточка с иконкой, акцентным цветом и описанием"
+
+msgid "CodeWeber"
+msgstr "CodeWeber"
