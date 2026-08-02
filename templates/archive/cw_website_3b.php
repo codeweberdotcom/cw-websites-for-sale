@@ -17,6 +17,21 @@ $cols_setting = cw_wfs_setting( 'archive_columns', '3' );
 $cols_map     = [ '2' => 'col-md-6', '3' => 'col-md-6 col-xl-4', '4' => 'col-md-6 col-xl-3' ];
 $col_class    = $cols_map[ $cols_setting ] ?? 'col-md-6 col-xl-4';
 $screen_h     = $cols_setting === '4' ? 210 : 285;
+
+global $wp_query;
+$per_page   = (int) ( $wp_query->query_vars['posts_per_page'] ?? get_option( 'posts_per_page', 9 ) );
+if ( $per_page <= 0 ) $per_page = (int) get_option( 'posts_per_page', 9 );
+$total      = (int) $wp_query->found_posts;
+$has_more   = $total > $per_page;
+$block_attrs = wp_json_encode( [
+	'card_slug'    => 'card-3b',
+	'per_page'     => $per_page,
+	'grid_gap'     => $grid_gap,
+	'col_class'    => $col_class,
+	'filters'      => [],
+	'screen_height' => $screen_h,
+	'scroll_mode'  => true,
+] );
 ?>
 
 <section id="content-wrapper" class="wrapper">
@@ -47,19 +62,26 @@ $screen_h     = $cols_setting === '4' ? 210 : 285;
 
 		<div id="cw-wfs-grid-results">
 		<?php if ( have_posts() ) : ?>
-		<div class="row <?php echo esc_attr( $grid_gap ); ?>">
-		<?php while ( have_posts() ) : the_post(); ?>
-		<div class="<?php echo esc_attr( $col_class ); ?>">
-			<?php cw_wfs_include_card( get_the_ID(), 'card-3b', [], [ 'screen_height' => $screen_h, 'scroll_mode' => true ] ); ?>
+		<div class="cwgb-load-more-container"
+		     data-block-id="cw-wfs-3b"
+		     data-block-type="cw_website"
+		     data-block-attributes="<?php echo esc_attr( $block_attrs ); ?>"
+		     data-current-offset="<?php echo esc_attr( $per_page ); ?>"
+		     data-load-count="<?php echo esc_attr( $per_page ); ?>"
+		     data-post-id="0">
+			<div class="cwgb-load-more-items row <?php echo esc_attr( $grid_gap ); ?>">
+			<?php while ( have_posts() ) : the_post(); ?>
+			<div class="<?php echo esc_attr( $col_class ); ?>">
+				<?php cw_wfs_include_card( get_the_ID(), 'card-3b', [], [ 'screen_height' => $screen_h, 'scroll_mode' => true ] ); ?>
+			</div>
+			<?php endwhile; ?>
+			</div>
+			<?php if ( $has_more ) : ?>
+			<div class="d-flex justify-content-center mt-10">
+				<button class="btn btn-outline-primary cwgb-load-more-btn"><?php esc_html_e( 'Show more', 'cw-websites-for-sale' ); ?></button>
+			</div>
+			<?php endif; ?>
 		</div>
-		<?php endwhile; ?>
-		</div>
-
-		<?php if ( function_exists( 'codeweber_posts_pagination' ) ) :
-			codeweber_posts_pagination( [ 'nav_class' => 'd-flex justify-content-center mt-10' ] );
-		else :
-			the_posts_pagination( [ 'mid_size' => 2 ] );
-		endif; ?>
 
 		<?php else : ?>
 		<p class="text-muted"><?php esc_html_e( 'No websites found.', 'cw-websites-for-sale' ); ?></p>
@@ -103,6 +125,12 @@ $screen_h     = $cols_setting === '4' ? 210 : 285;
 		});
 	}
 	initScreenScroll();
+
+	// Re-init hover-scroll when load-more appends new cards
+	var itemsEl = document.querySelector('.cwgb-load-more-items');
+	if (itemsEl && window.MutationObserver) {
+		new MutationObserver(function() { initScreenScroll(itemsEl); }).observe(itemsEl, { childList: true });
+	}
 
 	// Direct preview modal handler
 	document.addEventListener('click', function(e) {

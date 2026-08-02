@@ -13,6 +13,19 @@ $has_cats  = ! empty( $cat_terms ) && ! is_wp_error( $cat_terms );
 $tag_terms = get_terms( [ 'taxonomy' => 'website_tag', 'hide_empty' => true, 'orderby' => 'name' ] );
 $has_tags  = ! empty( $tag_terms ) && ! is_wp_error( $tag_terms );
 $grid_gap  = class_exists( 'Codeweber_Options' ) ? Codeweber_Options::style( 'grid-gap' ) : 'gx-md-8 gy-10 gy-md-13';
+
+global $wp_query;
+$per_page   = (int) ( $wp_query->query_vars['posts_per_page'] ?? get_option( 'posts_per_page', 9 ) );
+if ( $per_page <= 0 ) $per_page = (int) get_option( 'posts_per_page', 9 );
+$total      = (int) $wp_query->found_posts;
+$has_more   = $total > $per_page;
+$block_attrs = wp_json_encode( [
+	'card_slug' => 'card-1c',
+	'per_page'  => $per_page,
+	'grid_gap'  => $grid_gap,
+	'col_class' => 'col-md-6 col-xl-4',
+	'filters'   => [],
+] );
 ?>
 
 <section id="content-wrapper" class="wrapper">
@@ -43,19 +56,26 @@ $grid_gap  = class_exists( 'Codeweber_Options' ) ? Codeweber_Options::style( 'gr
 
 		<div id="cw-wfs-grid-results">
 		<?php if ( have_posts() ) : ?>
-		<div class="row <?php echo esc_attr( $grid_gap ); ?>">
-		<?php while ( have_posts() ) : the_post(); ?>
-		<div class="col-md-6 col-xl-4">
-			<?php cw_wfs_include_card( get_the_ID(), 'card-1c' ); ?>
+		<div class="cwgb-load-more-container"
+		     data-block-id="cw-wfs-1c"
+		     data-block-type="cw_website"
+		     data-block-attributes="<?php echo esc_attr( $block_attrs ); ?>"
+		     data-current-offset="<?php echo esc_attr( $per_page ); ?>"
+		     data-load-count="<?php echo esc_attr( $per_page ); ?>"
+		     data-post-id="0">
+			<div class="cwgb-load-more-items row <?php echo esc_attr( $grid_gap ); ?>">
+			<?php while ( have_posts() ) : the_post(); ?>
+			<div class="col-md-6 col-xl-4">
+				<?php cw_wfs_include_card( get_the_ID(), 'card-1c' ); ?>
+			</div>
+			<?php endwhile; ?>
+			</div>
+			<?php if ( $has_more ) : ?>
+			<div class="d-flex justify-content-center mt-10">
+				<button class="btn btn-outline-primary cwgb-load-more-btn"><?php esc_html_e( 'Show more', 'cw-websites-for-sale' ); ?></button>
+			</div>
+			<?php endif; ?>
 		</div>
-		<?php endwhile; ?>
-		</div>
-
-		<?php if ( function_exists( 'codeweber_posts_pagination' ) ) :
-			codeweber_posts_pagination( [ 'nav_class' => 'd-flex justify-content-center mt-10' ] );
-		else :
-			the_posts_pagination( [ 'mid_size' => 2 ] );
-		endif; ?>
 
 		<?php else : ?>
 		<p class="text-muted"><?php esc_html_e( 'No websites found.', 'cw-websites-for-sale' ); ?></p>
