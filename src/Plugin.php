@@ -16,6 +16,32 @@ class Plugin {
 		( new Admin\Metaboxes() )->init();
 		( new Admin\SettingsPage() )->init();
 		( new Admin\ModuleMetaboxes() )->init();
+
+		$this->register_module_card_templates();
+	}
+
+	private function register_module_card_templates(): void {
+		add_filter( 'codeweber_post_card_templates_registry', function ( $registry ) {
+			$registry['cw_module'] = [
+				'dir'       => 'cw_module',
+				'templates' => [
+					'card' => [
+						'label'       => __( 'Card', 'cw-websites-for-sale' ),
+						'description' => __( 'Card with icon, accent color and description', 'cw-websites-for-sale' ),
+						'supports'    => [ 'title', 'excerpt' ],
+					],
+				],
+			];
+			return $registry;
+		} );
+
+		add_filter( 'codeweber_post_card_template_path', function ( $path, $template_name, $post_type ) {
+			if ( $post_type !== 'cw_module' ) {
+				return $path;
+			}
+			$plugin_path = CW_WFS_DIR . 'templates/post-cards/cw_module/' . sanitize_file_name( $template_name ) . '.php';
+			return file_exists( $plugin_path ) ? $plugin_path : $path;
+		}, 10, 3 );
 	}
 
 	// ─────────────────────────────────────────────────────────────────────────
