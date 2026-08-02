@@ -33,6 +33,8 @@ $border_radius = class_exists( 'Codeweber_Options' )
 	? ( Codeweber_Options::style( 'card-radius' ) ?: $template_args['border_radius'] )
 	: $template_args['border_radius'];
 
+$btn_style = class_exists( 'Codeweber_Options' ) ? Codeweber_Options::style( 'button' ) : '';
+
 $cat_colors = [
 	[ 'bg' => '#dbeafe', 'fg' => '#1d4ed8' ],
 	[ 'bg' => '#dcfce7', 'fg' => '#15803d' ],
@@ -126,9 +128,9 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 			<div class="small text-muted mt-1"><?php echo esc_html__( 'Term:', 'cw-websites-for-sale' ) . ' ' . esc_html( $launch_time ); ?></div>
 			<?php endif; ?>
 			<div class="d-grid mt-3" style="grid-template-columns:1fr auto;gap:8px;display:grid;">
-				<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-primary fw-bold" style="height:42px;display:flex;align-items:center;justify-content:center;"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
+				<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-primary fw-bold<?php echo esc_attr( $btn_style ); ?>" style="height:42px;display:flex;align-items:center;justify-content:center;"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
 				<?php if ( $website_url ) : ?>
-				<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" class="btn btn-outline-secondary fw-bold" style="height:42px;display:flex;align-items:center;justify-content:center;padding:0 12px;"><?php esc_html_e( 'Preview', 'cw-websites-for-sale' ); ?></a>
+				<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" class="btn btn-outline-secondary fw-bold<?php echo esc_attr( $btn_style ); ?>" style="height:42px;display:flex;align-items:center;justify-content:center;padding:0 12px;"><?php esc_html_e( 'Preview', 'cw-websites-for-sale' ); ?></a>
 				<?php endif; ?>
 			</div>
 		</div>

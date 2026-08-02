@@ -29,6 +29,12 @@ $template_args = wp_parse_args( $template_args ?? [], [
 	'enable_lift'   => false,
 ] );
 
+$border_radius = class_exists( 'Codeweber_Options' )
+	? ( Codeweber_Options::style( 'card-radius' ) ?: $template_args['border_radius'] )
+	: $template_args['border_radius'];
+
+$btn_style = class_exists( 'Codeweber_Options' ) ? Codeweber_Options::style( 'button' ) : '';
+
 $cat_colors = [
 	[ 'dot' => '#60a5fa', 'fg' => '#60a5fa' ],
 	[ 'dot' => '#4ade80', 'fg' => '#4ade80' ],
@@ -69,7 +75,7 @@ $title_class = ! empty( $display['title_class'] ) ? esc_attr( $display['title_cl
 $lift_class  = ! empty( $template_args['enable_lift'] ) ? ';transform:translateY(-4px)' : '';
 ?>
 
-<article class="h-100" style="background:#1a2234;border:1px solid #26324a;border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s,border-color .18s<?php echo $lift_class; ?>;" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 22px 48px rgba(0,0,0,.55)';this.style.borderColor='#818cf8'" onmouseleave="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#26324a'">
+<article class="h-100<?php echo $border_radius ? ' ' . esc_attr( $border_radius ) : ''; ?>" style="background:#1a2234;border:1px solid #26324a;overflow:hidden;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s,border-color .18s<?php echo $lift_class; ?>;" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 22px 48px rgba(0,0,0,.55)';this.style.borderColor='#818cf8'" onmouseleave="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#26324a'">
 
 	<div class="position-relative overflow-hidden" style="height:178px;">
 		<?php if ( $screenshot ) :
@@ -112,9 +118,9 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ';transform:translateY
 	</div>
 
 	<div class="px-4 pb-4" style="display:grid;grid-template-columns:1fr auto;gap:8px;">
-		<a href="<?php echo esc_url( $permalink ); ?>" class="btn fw-bold" style="background:#818cf8;color:#0b1120;border-color:#818cf8;height:46px;display:flex;align-items:center;justify-content:center;border-radius:11px;" onmouseenter="this.style.background='#a5b4fc'" onmouseleave="this.style.background='#818cf8'"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
+		<a href="<?php echo esc_url( $permalink ); ?>" class="btn fw-bold<?php echo esc_attr( $btn_style ); ?>" style="background:#818cf8;color:#0b1120;border-color:#818cf8;height:46px;display:flex;align-items:center;justify-content:center;" onmouseenter="this.style.background='#a5b4fc'" onmouseleave="this.style.background='#818cf8'"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
 		<?php if ( $website_url ) : ?>
-		<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" title="<?php esc_attr_e( 'Preview', 'cw-websites-for-sale' ); ?>" style="width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:#26324a;color:#cbd5e1;border-radius:11px;text-decoration:none;font-size:18px;" onmouseenter="this.style.background='#33415d';this.style.color='#fff'" onmouseleave="this.style.background='#26324a';this.style.color='#cbd5e1'"><i class="uil uil-play-circle"></i></a>
+		<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" title="<?php esc_attr_e( 'Preview', 'cw-websites-for-sale' ); ?>" class="<?php echo esc_attr( $btn_style ); ?>" style="width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:#26324a;color:#cbd5e1;text-decoration:none;font-size:18px;" onmouseenter="this.style.background='#33415d';this.style.color='#fff'" onmouseleave="this.style.background='#26324a';this.style.color='#cbd5e1'"><i class="uil uil-play-circle"></i></a>
 		<?php endif; ?>
 	</div>
 

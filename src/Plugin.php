@@ -46,11 +46,6 @@ class Plugin {
 						'description' => __( 'Price pill on screenshot, dot category, indigo Details button', 'cw-websites-for-sale' ),
 						'supports'    => [ 'title' ],
 					],
-					'card-3' => [
-						'label'       => __( 'Card 3', 'cw-websites-for-sale' ),
-						'description' => __( 'Overlay card: screenshot with hover description, tags and Preview modal', 'cw-websites-for-sale' ),
-						'supports'    => [ 'title', 'excerpt' ],
-					],
 					'card-3a' => [
 						'label'       => __( 'Card 3a', 'cw-websites-for-sale' ),
 						'description' => __( 'Dark card with violet accent, screenshot, price and Details button', 'cw-websites-for-sale' ),
@@ -410,5 +405,24 @@ class Plugin {
 			</div>
 		</div>
 		<?php
+	}
+
+	// ─────────────────────────────────────────────────────────────────────────
+	// Preview Modal
+	// ─────────────────────────────────────────────────────────────────────────
+
+	public static function request_preview_modal(): void {
+		static $registered = false;
+		if ( $registered ) {
+			return;
+		}
+		$registered = true;
+		add_action( 'wp_footer', [ self::class, 'render_preview_modal' ] );
+	}
+
+	public static function render_preview_modal(): void {
+		if ( locate_template( 'templates/components/cw-preview-modal.php' ) ) {
+			get_template_part( 'templates/components/cw-preview-modal' );
+		}
 	}
 }

@@ -33,6 +33,8 @@ $border_radius = class_exists( 'Codeweber_Options' )
 	? ( Codeweber_Options::style( 'card-radius' ) ?: $template_args['border_radius'] )
 	: $template_args['border_radius'];
 
+$btn_style = class_exists( 'Codeweber_Options' ) ? Codeweber_Options::style( 'button' ) : '';
+
 $cat_colors = [
 	[ 'fg' => '#1d4ed8', 'dot' => '#60a5fa' ],
 	[ 'fg' => '#15803d', 'dot' => '#4ade80' ],
@@ -73,7 +75,7 @@ $title_class = ! empty( $display['title_class'] ) ? esc_attr( $display['title_cl
 $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 ?>
 
-<article class="card shadow-sm border<?php echo $border_radius ? ' ' . esc_attr( $border_radius ) : ''; ?> overflow-hidden h-100<?php echo $lift_class; ?>" style="border-radius:1rem!important;">
+<article class="card shadow-sm border<?php echo $border_radius ? ' ' . esc_attr( $border_radius ) : ''; ?> overflow-hidden h-100<?php echo $lift_class; ?>">
 
 	<div class="position-relative overflow-hidden" style="height:180px;">
 		<?php if ( $screenshot ) :
@@ -114,9 +116,9 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 		<?php endif; ?>
 
 		<div class="mt-auto" style="display:grid;grid-template-columns:1fr auto;gap:8px;">
-			<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-primary fw-bold" style="background:#4f46e5;border-color:#4f46e5;height:46px;display:flex;align-items:center;justify-content:center;border-radius:0.75rem;"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
+			<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-primary fw-bold<?php echo esc_attr( $btn_style ); ?>" style="background:#4f46e5;border-color:#4f46e5;height:46px;display:flex;align-items:center;justify-content:center;"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
 			<?php if ( $website_url ) : ?>
-			<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" class="btn btn-outline-secondary fw-bold" style="width:46px;height:46px;display:flex;align-items:center;justify-content:center;border-radius:0.75rem;" title="<?php esc_attr_e( 'Preview', 'cw-websites-for-sale' ); ?>"><i class="uil uil-play-circle" style="font-size:18px;"></i></a>
+			<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" class="btn btn-outline-secondary fw-bold<?php echo esc_attr( $btn_style ); ?>" style="width:46px;height:46px;display:flex;align-items:center;justify-content:center;" title="<?php esc_attr_e( 'Preview', 'cw-websites-for-sale' ); ?>"><i class="uil uil-play-circle" style="font-size:18px;"></i></a>
 			<?php endif; ?>
 		</div>
 	</div>

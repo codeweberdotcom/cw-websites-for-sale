@@ -13,6 +13,8 @@ if ( ! isset( $post_data ) || ! $post_data ) {
 	return;
 }
 
+\CW\WebsitesForSale\Plugin::request_preview_modal();
+
 $display = function_exists( 'cw_get_post_card_display_settings' )
 	? cw_get_post_card_display_settings( $display_settings ?? [] )
 	: wp_parse_args( $display_settings ?? [], [
