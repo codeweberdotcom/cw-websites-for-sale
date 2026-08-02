@@ -37,6 +37,7 @@ register_deactivation_hook( __FILE__, function () {
 } );
 
 add_action( 'plugins_loaded', function () {
+	load_plugin_textdomain( 'cw-websites-for-sale', false, dirname( plugin_basename( CW_WFS_FILE ) ) . '/languages' );
 	( new CW\WebsitesForSale\Plugin() )->init();
 } );
 
