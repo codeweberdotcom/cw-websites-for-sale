@@ -97,9 +97,7 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 	<div class="card-body p-4">
 		<div class="post-header">
 			<?php if ( $display['show_title'] && $title ) : ?>
-			<<?php echo esc_attr( $title_tag ); ?> class="<?php echo esc_attr( $title_class ); ?>">
-				<a href="<?php echo esc_url( $permalink ); ?>" class="link-dark"><?php echo esc_html( $title ); ?></a>
-			</<?php echo esc_attr( $title_tag ); ?>>
+			<<?php echo esc_attr( $title_tag ); ?> class="<?php echo esc_attr( $title_class ); ?>"><?php echo esc_html( $title ); ?></<?php echo esc_attr( $title_tag ); ?>>
 			<?php endif; ?>
 			<p class="price text-primary fs-22 fw-bold mb-0">
 				<ins><span class="amount"><?php echo $price ? esc_html( $price ) . ' ₽' : ''; ?></span></ins>
@@ -111,7 +109,7 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 	</div>
 
 	<div class="card-footer d-flex gap-2 bg-transparent border-0 pt-0 px-4 pb-4">
-		<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-outline-secondary<?php echo esc_attr( $btn_style ); ?> has-ripple flex-grow-1"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
+		<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-primary<?php echo esc_attr( $btn_style ); ?> has-ripple flex-grow-1"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
 		<?php if ( $website_url ) : ?>
 		<button type="button" class="btn btn-outline-primary<?php echo esc_attr( $btn_style ); ?> has-ripple"
 			data-bs-toggle="modal"
