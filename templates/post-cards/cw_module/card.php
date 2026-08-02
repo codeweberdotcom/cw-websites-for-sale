@@ -24,7 +24,12 @@ $display = function_exists( 'cw_get_post_card_display_settings' )
 		'title_class'    => '',
 	] );
 
-$post_id = $post_data['post']->ID ?? 0;
+$template_args = wp_parse_args( $template_args ?? [], [
+	'border_radius' => ( class_exists( 'Codeweber_Options' ) ? Codeweber_Options::style( 'card-radius' ) : '' ) ?: 'rounded',
+	'enable_lift'   => false,
+] );
+
+$post_id = $post_data['id'] ?? 0;
 $icon    = $post_id ? ( get_post_meta( $post_id, '_module_icon', true ) ?: 'check-circle' ) : 'check-circle';
 $hex     = $post_id ? ( get_post_meta( $post_id, '_module_color', true ) ?: '#605dba' ) : '#605dba';
 
@@ -53,15 +58,18 @@ if ( $display['title_length'] > 0 && mb_strlen( $title ) > $display['title_lengt
 
 $excerpt = '';
 if ( ! empty( $display['show_excerpt'] ) && $display['excerpt_length'] > 0 ) {
-	$raw     = ! empty( $post_data['excerpt'] ) ? $post_data['excerpt'] : $post_data['post']->post_content;
+	$raw     = ! empty( $post_data['excerpt'] ) ? $post_data['excerpt'] : ( $post_data['post']->post_content ?? '' );
 	$excerpt = wp_trim_words( wp_strip_all_tags( $raw ), $display['excerpt_length'], '...' );
 }
 
 $title_tag   = isset( $display['title_tag'] ) ? sanitize_html_class( $display['title_tag'] ) : 'h3';
 $title_class = ! empty( $display['title_class'] ) ? esc_attr( $display['title_class'] ) : 'h5 mb-3';
+
+$lift_class    = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
+$radius_class  = $template_args['border_radius'] ? ' ' . esc_attr( $template_args['border_radius'] ) : '';
 ?>
 
-<article class="card shadow-lg h-100">
+<article class="card shadow-lg h-100<?php echo $radius_class . $lift_class; ?>">
 	<div class="card-body p-6 d-flex flex-column">
 
 		<div class="icon btn btn-circle btn-lg btn-soft-<?php echo esc_attr( $color_name ); ?> pe-none mb-5">
