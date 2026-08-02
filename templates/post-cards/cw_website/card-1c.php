@@ -86,7 +86,7 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 		<div class="w-100 h-100 bg-soft-ash"></div>
 		<?php endif; ?>
 		<?php if ( $price ) : ?>
-		<span style="position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;height:30px;padding:0 14px;border-radius:999px;font-size:14px;font-weight:800;background:#fff;color:#0f172a;box-shadow:0 3px 10px rgba(15,23,42,.2);z-index:2;"><?php echo esc_html( $price ); ?> ₽</span>
+		<span class="bg-white text-dark" style="position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;height:30px;padding:0 14px;border-radius:999px;font-size:14px;font-weight:800;box-shadow:0 3px 10px rgba(15,23,42,.2);z-index:2;"><?php echo esc_html( $price ); ?> ₽</span>
 		<?php endif; ?>
 		<span class="badge <?php echo esc_attr( $st['class'] ); ?> position-absolute top-0 start-0 m-2" style="z-index:2;"><?php echo $st['label']; ?></span>
 		<?php if ( $website_url ) : ?>
@@ -114,10 +114,10 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 		<?php endif; ?>
 	</div>
 
-	<div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#1e293b;margin-top:auto;">
-		<a href="<?php echo esc_url( $permalink ); ?>" style="display:flex;align-items:center;justify-content:center;height:48px;background:#0f172a;color:#fff;font-weight:700;font-size:14px;text-decoration:none;" onmouseenter="this.style.background='#1e293b'" onmouseleave="this.style.background='#0f172a'"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
+	<div class="bg-dark mt-auto" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;">
+		<a href="<?php echo esc_url( $permalink ); ?>" class="bg-dark text-white text-decoration-none fw-bold" style="display:flex;align-items:center;justify-content:center;height:48px;font-size:14px;" onmouseenter="this.style.opacity='.75'" onmouseleave="this.style.opacity=''"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
 		<?php if ( $website_url ) : ?>
-		<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;height:48px;background:#0f172a;color:#cbd5e1;font-weight:700;font-size:14px;text-decoration:none;" onmouseenter="this.style.background='#1e293b';this.style.color='#fff'" onmouseleave="this.style.background='#0f172a';this.style.color='#cbd5e1'"><i class="uil uil-play-circle me-2"></i><?php esc_html_e( 'Preview', 'cw-websites-for-sale' ); ?></a>
+		<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" class="bg-dark text-muted text-decoration-none fw-bold border-start border-secondary" style="display:flex;align-items:center;justify-content:center;height:48px;font-size:14px;" onmouseenter="this.style.opacity='.75'" onmouseleave="this.style.opacity=''"><i class="uil uil-play-circle me-2"></i><?php esc_html_e( 'Preview', 'cw-websites-for-sale' ); ?></a>
 		<?php else : ?>
 		<span></span>
 		<?php endif; ?>

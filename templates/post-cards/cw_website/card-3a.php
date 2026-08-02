@@ -71,11 +71,11 @@ if ( $display['title_length'] > 0 && mb_strlen( $title ) > $display['title_lengt
 }
 
 $title_tag   = isset( $display['title_tag'] ) ? sanitize_html_class( $display['title_tag'] ) : 'h3';
-$title_class = ! empty( $display['title_class'] ) ? esc_attr( $display['title_class'] ) : 'mb-0 fw-bold';
+$title_class = ! empty( $display['title_class'] ) ? esc_attr( $display['title_class'] ) : 'mb-0 fw-bold text-white';
 $lift_class  = ! empty( $template_args['enable_lift'] ) ? ';transform:translateY(-4px)' : '';
 ?>
 
-<article class="h-100<?php echo $border_radius ? ' ' . esc_attr( $border_radius ) : ''; ?>" style="background:#1a2234;border:1px solid #26324a;overflow:hidden;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s,border-color .18s<?php echo $lift_class; ?>;" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 22px 48px rgba(0,0,0,.55)';this.style.borderColor='#818cf8'" onmouseleave="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#26324a'">
+<article class="h-100 bg-dark<?php echo $border_radius ? ' ' . esc_attr( $border_radius ) : ''; ?>" style="border:1px solid #26324a;overflow:hidden;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s,border-color .18s<?php echo $lift_class; ?>;" onmouseenter="this.style.transform='translateY(-4px)';this.style.boxShadow='0 22px 48px rgba(0,0,0,.55)';this.style.borderColor='#818cf8'" onmouseleave="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#26324a'">
 
 	<div class="position-relative overflow-hidden" style="height:178px;">
 		<?php if ( $screenshot ) :
@@ -85,7 +85,7 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ';transform:translateY
 				'style' => 'height:100%;object-fit:cover;object-position:top center;',
 			] );
 		else : ?>
-		<div class="w-100 h-100" style="background:#26324a;"></div>
+		<div class="w-100 h-100 bg-ash"></div>
 		<?php endif; ?>
 		<span class="badge <?php echo esc_attr( $st['class'] ); ?> position-absolute top-0 start-0 m-2" style="z-index:2;"><?php echo $st['label']; ?></span>
 		<?php if ( $website_url ) : ?>
@@ -93,7 +93,7 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ';transform:translateY
 			class="position-absolute d-flex align-items-center justify-content-center text-decoration-none"
 			style="inset:0;background:rgba(11,17,32,.6);opacity:0;transition:opacity .18s;"
 			onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='0'">
-			<span class="rounded-pill fw-bold px-4 py-2" style="background:#818cf8;color:#0b1120;font-size:14px;"><i class="uil uil-play-circle me-2"></i><?php esc_html_e( 'Live Preview', 'cw-websites-for-sale' ); ?></span>
+			<span class="rounded-pill fw-bold px-4 py-2 bg-primary text-dark" style="font-size:14px;"><i class="uil uil-play-circle me-2"></i><?php esc_html_e( 'Live Preview', 'cw-websites-for-sale' ); ?></span>
 		</a>
 		<?php endif; ?>
 	</div>
@@ -103,24 +103,24 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ';transform:translateY
 			<?php if ( $cat_name ) : ?>
 			<span style="width:8px;height:8px;border-radius:50%;flex-shrink:0;background:<?php echo esc_attr( $cat_c['dot'] ); ?>;"></span>
 			<span class="small fw-bold" style="color:<?php echo esc_attr( $cat_c['fg'] ); ?>;"><?php echo esc_html( $cat_name ); ?></span>
-			<span style="color:#3f4a63;font-size:12px;">•</span>
+			<span class="text-muted" style="font-size:12px;">•</span>
 			<?php endif; ?>
-			<span class="small fw-semibold" style="color:#64748b;"><?php echo esc_html( $cms ); ?><?php if ( $launch_time ) echo ' · ' . esc_html( $launch_time ); ?></span>
+			<span class="small fw-semibold text-muted"><?php echo esc_html( $cms ); ?><?php if ( $launch_time ) echo ' · ' . esc_html( $launch_time ); ?></span>
 		</div>
 
 		<?php if ( $display['show_title'] && $title ) : ?>
-		<<?php echo esc_attr( $title_tag ); ?> class="<?php echo esc_attr( $title_class ); ?>" style="font-size:20px;color:#f1f5f9;letter-spacing:-.02em;line-height:1.2;"><?php echo esc_html( $title ); ?></<?php echo esc_attr( $title_tag ); ?>>
+		<<?php echo esc_attr( $title_tag ); ?> class="<?php echo esc_attr( $title_class ); ?>" style="font-size:20px;letter-spacing:-.02em;line-height:1.2;"><?php echo esc_html( $title ); ?></<?php echo esc_attr( $title_tag ); ?>>
 		<?php endif; ?>
 
 		<?php if ( $price ) : ?>
-		<div class="mt-auto" style="font-size:22px;font-weight:800;color:#a5b4fc;line-height:1;"><?php echo esc_html( $price ); ?> ₽</div>
+		<div class="mt-auto text-primary" style="font-size:22px;font-weight:800;line-height:1;"><?php echo esc_html( $price ); ?> ₽</div>
 		<?php endif; ?>
 	</div>
 
 	<div class="px-4 pb-4" style="display:grid;grid-template-columns:1fr auto;gap:8px;">
-		<a href="<?php echo esc_url( $permalink ); ?>" class="btn fw-bold<?php echo esc_attr( $btn_style ); ?>" style="background:#818cf8;color:#0b1120;border-color:#818cf8;height:46px;display:flex;align-items:center;justify-content:center;" onmouseenter="this.style.background='#a5b4fc'" onmouseleave="this.style.background='#818cf8'"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
+		<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-primary fw-bold<?php echo esc_attr( $btn_style ); ?>" style="height:46px;display:flex;align-items:center;justify-content:center;"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
 		<?php if ( $website_url ) : ?>
-		<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" title="<?php esc_attr_e( 'Preview', 'cw-websites-for-sale' ); ?>" class="<?php echo esc_attr( $btn_style ); ?>" style="width:46px;height:46px;display:flex;align-items:center;justify-content:center;background:#26324a;color:#cbd5e1;text-decoration:none;font-size:18px;" onmouseenter="this.style.background='#33415d';this.style.color='#fff'" onmouseleave="this.style.background='#26324a';this.style.color='#cbd5e1'"><i class="uil uil-play-circle"></i></a>
+		<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" title="<?php esc_attr_e( 'Preview', 'cw-websites-for-sale' ); ?>" class="btn btn-outline-secondary<?php echo esc_attr( $btn_style ); ?>" style="width:46px;height:46px;display:flex;align-items:center;justify-content:center;font-size:18px;"><i class="uil uil-play-circle"></i></a>
 		<?php endif; ?>
 	</div>
 

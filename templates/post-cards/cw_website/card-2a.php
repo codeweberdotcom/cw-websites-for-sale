@@ -88,7 +88,7 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 		<div class="w-100 h-100 bg-soft-ash"></div>
 		<?php endif; ?>
 		<?php if ( $price ) : ?>
-		<span style="position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;height:30px;padding:0 14px;border-radius:999px;font-size:14px;font-weight:800;background:#fff;color:#0f172a;box-shadow:0 3px 10px rgba(15,23,42,.2);z-index:2;"><?php echo esc_html( $price ); ?> ₽</span>
+		<span class="bg-white text-dark" style="position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;height:30px;padding:0 14px;border-radius:999px;font-size:14px;font-weight:800;box-shadow:0 3px 10px rgba(15,23,42,.2);z-index:2;"><?php echo esc_html( $price ); ?> ₽</span>
 		<?php endif; ?>
 		<span class="badge <?php echo esc_attr( $st['class'] ); ?> position-absolute top-0 start-0 m-2" style="z-index:2;"><?php echo $st['label']; ?></span>
 		<?php if ( $website_url ) : ?>
@@ -116,7 +116,7 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 		<?php endif; ?>
 
 		<div class="mt-auto" style="display:grid;grid-template-columns:1fr auto;gap:8px;">
-			<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-primary fw-bold<?php echo esc_attr( $btn_style ); ?>" style="background:#4f46e5;border-color:#4f46e5;height:46px;display:flex;align-items:center;justify-content:center;"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
+			<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-primary fw-bold<?php echo esc_attr( $btn_style ); ?>" style="height:46px;display:flex;align-items:center;justify-content:center;"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
 			<?php if ( $website_url ) : ?>
 			<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" class="btn btn-outline-secondary fw-bold<?php echo esc_attr( $btn_style ); ?>" style="width:46px;height:46px;display:flex;align-items:center;justify-content:center;" title="<?php esc_attr_e( 'Preview', 'cw-websites-for-sale' ); ?>"><i class="uil uil-play-circle" style="font-size:18px;"></i></a>
 			<?php endif; ?>

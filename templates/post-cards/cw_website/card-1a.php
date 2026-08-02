@@ -78,7 +78,7 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 
 <article class="card shadow-sm border<?php echo $border_radius ? ' ' . esc_attr( $border_radius ) : ''; ?> overflow-hidden h-100<?php echo $lift_class; ?>">
 
-	<div style="height:30px;background:#f8fafc;border-bottom:1px solid #eef2f7;" class="d-flex align-items-center gap-2 px-3">
+	<div class="d-flex align-items-center bg-soft-ash border-bottom gap-2 px-3" style="height:30px;">
 		<span style="width:9px;height:9px;background:#f87171;border-radius:50%;flex-shrink:0;"></span>
 		<span style="width:9px;height:9px;background:#fbbf24;border-radius:50%;flex-shrink:0;"></span>
 		<span style="width:9px;height:9px;background:#34d399;border-radius:50%;flex-shrink:0;"></span>
