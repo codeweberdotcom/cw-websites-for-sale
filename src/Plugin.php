@@ -7,12 +7,15 @@ class Plugin {
 	public function init(): void {
 		add_action( 'init',               [ $this, 'register_cpt' ] );
 		add_action( 'init',               [ $this, 'register_taxonomies' ] );
+		add_action( 'init',               [ $this, 'register_cpt_module' ] );
+		add_action( 'init',               [ $this, 'register_taxonomy_module_category' ] );
 		add_action( 'widgets_init',       [ $this, 'register_widget' ] );
 		add_filter( 'template_include',   [ $this, 'template_include' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
 
 		( new Admin\Metaboxes() )->init();
 		( new Admin\SettingsPage() )->init();
+		( new Admin\ModuleMetaboxes() )->init();
 	}
 
 	// ─────────────────────────────────────────────────────────────────────────
@@ -102,6 +105,75 @@ class Plugin {
 			'show_ui'      => true,
 			'show_in_rest' => true,
 			'rewrite'      => [ 'slug' => 'website-tag', 'with_front' => true ],
+		] );
+	}
+
+	// ─────────────────────────────────────────────────────────────────────────
+	// CPT: Modules (admin-only, not public)
+	// ─────────────────────────────────────────────────────────────────────────
+
+	public function register_cpt_module(): void {
+		$labels = [
+			'name'               => esc_html__( 'Modules', 'cw-websites-for-sale' ),
+			'singular_name'      => esc_html__( 'Module', 'cw-websites-for-sale' ),
+			'menu_name'          => esc_html__( 'Modules', 'cw-websites-for-sale' ),
+			'all_items'          => esc_html__( 'All Modules', 'cw-websites-for-sale' ),
+			'add_new'            => esc_html__( 'Add New', 'cw-websites-for-sale' ),
+			'add_new_item'       => esc_html__( 'Add New Module', 'cw-websites-for-sale' ),
+			'edit_item'          => esc_html__( 'Edit Module', 'cw-websites-for-sale' ),
+			'new_item'           => esc_html__( 'New Module', 'cw-websites-for-sale' ),
+			'search_items'       => esc_html__( 'Search Modules', 'cw-websites-for-sale' ),
+			'not_found'          => esc_html__( 'No modules found', 'cw-websites-for-sale' ),
+			'not_found_in_trash' => esc_html__( 'No modules found in trash', 'cw-websites-for-sale' ),
+		];
+
+		register_post_type( 'cw_module', [
+			'label'               => esc_html__( 'Modules', 'cw-websites-for-sale' ),
+			'labels'              => $labels,
+			'public'              => false,
+			'publicly_queryable'  => false,
+			'show_ui'             => true,
+			'show_in_rest'        => true,
+			'has_archive'         => false,
+			'show_in_menu'        => true,
+			'show_in_nav_menus'   => false,
+			'exclude_from_search' => true,
+			'delete_with_user'    => false,
+			'capability_type'     => 'post',
+			'map_meta_cap'        => true,
+			'hierarchical'        => false,
+			'can_export'          => true,
+			'rewrite'             => false,
+			'query_var'           => false,
+			'supports'            => [ 'title', 'editor' ],
+			'taxonomies'          => [ 'module_category' ],
+			'menu_icon'           => 'dashicons-grid-view',
+			'menu_position'       => 7,
+			'show_in_graphql'     => false,
+		] );
+	}
+
+	public function register_taxonomy_module_category(): void {
+		register_taxonomy( 'module_category', [ 'cw_module' ], [
+			'label'              => esc_html__( 'Module Categories', 'cw-websites-for-sale' ),
+			'labels'             => [
+				'name'          => esc_html__( 'Module Categories', 'cw-websites-for-sale' ),
+				'singular_name' => esc_html__( 'Module Category', 'cw-websites-for-sale' ),
+				'all_items'     => esc_html__( 'All Categories', 'cw-websites-for-sale' ),
+				'add_new_item'  => esc_html__( 'Add New Category', 'cw-websites-for-sale' ),
+				'edit_item'     => esc_html__( 'Edit Category', 'cw-websites-for-sale' ),
+				'new_item'      => esc_html__( 'New Category', 'cw-websites-for-sale' ),
+				'search_items'  => esc_html__( 'Search Categories', 'cw-websites-for-sale' ),
+				'not_found'     => esc_html__( 'No categories found', 'cw-websites-for-sale' ),
+			],
+			'public'             => false,
+			'publicly_queryable' => false,
+			'show_ui'            => true,
+			'show_in_rest'       => true,
+			'show_in_nav_menus'  => false,
+			'hierarchical'       => true,
+			'rewrite'            => false,
+			'query_var'          => false,
 		] );
 	}
 
