@@ -49,6 +49,30 @@ function cw_wfs_render_card( int $post_id ): void {
 }
 
 /**
+ * Renders a post-card template by slug, isolated to prevent variable leakage.
+ *
+ * @param int    $post_id          Post ID.
+ * @param string $card_slug        Slug from templates/post-cards/cw_website/ (e.g. 'card-3b').
+ * @param array  $display_settings Passed as $display_settings to the template.
+ * @param array  $template_args    Passed as $template_args to the template.
+ */
+function cw_wfs_include_card( int $post_id, string $card_slug, array $display_settings = [], array $template_args = [] ): void {
+	$template_file = CW_WFS_DIR . 'templates/post-cards/cw_website/' . $card_slug . '.php';
+	if ( ! file_exists( $template_file ) ) {
+		return;
+	}
+	$post_data = [
+		'id'    => $post_id,
+		'title' => get_the_title( $post_id ),
+		'link'  => get_permalink( $post_id ),
+		'type'  => 'cw_website',
+	];
+	( static function () use ( $template_file, $post_data, $display_settings, $template_args ) {
+		include $template_file;
+	} )();
+}
+
+/**
  * Returns a plugin setting value.
  */
 function cw_wfs_setting( string $key, $default = '' ) {

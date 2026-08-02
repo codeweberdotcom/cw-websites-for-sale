@@ -29,6 +29,8 @@ $display = function_exists( 'cw_get_post_card_display_settings' )
 $template_args = wp_parse_args( $template_args ?? [], [
 	'border_radius' => 'rounded',
 	'enable_lift'   => false,
+	'screen_height' => 220,
+	'scroll_mode'   => false,
 ] );
 
 $border_radius = class_exists( 'Codeweber_Options' )
@@ -78,13 +80,17 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 
 <article class="card h-100 shadow-sm<?php echo $border_radius ? ' ' . esc_attr( $border_radius ) : ''; echo $lift_class; ?>">
 
-	<div class="position-relative overflow-hidden mx-2 mt-2<?php echo $border_radius ? ' ' . esc_attr( $border_radius ) : ''; ?>" style="height:220px;">
+	<?php
+	$screen_h    = (int) $template_args['screen_height'];
+	$scroll_mode = ! empty( $template_args['scroll_mode'] );
+	$screen_wrap_class = 'position-relative overflow-hidden mx-2 mt-2' . ( $border_radius ? ' ' . esc_attr( $border_radius ) : '' ) . ( $scroll_mode ? ' cw-it-screen' : '' );
+	$img_attrs = $scroll_mode
+		? [ 'alt' => esc_attr( $title ), 'class' => 'w-100 cw-it-screenshot', 'style' => 'height:auto' ]
+		: [ 'alt' => esc_attr( $title ), 'class' => 'w-100 d-block', 'style' => 'height:100%;object-fit:cover;object-position:top center;' ];
+	?>
+	<div class="<?php echo esc_attr( $screen_wrap_class ); ?>" style="height:<?php echo $screen_h; ?>px;">
 		<?php if ( $screenshot ) :
-			echo wp_get_attachment_image( $screenshot, 'full', false, [
-				'alt'   => esc_attr( $title ),
-				'class' => 'w-100 d-block',
-				'style' => 'height:100%;object-fit:cover;object-position:top center;',
-			] );
+			echo wp_get_attachment_image( $screenshot, 'full', false, $img_attrs );
 		else : ?>
 		<div class="w-100 h-100 bg-ash"></div>
 		<?php endif; ?>
