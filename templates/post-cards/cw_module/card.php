@@ -1,6 +1,9 @@
 <?php
 /**
- * Template: Module Card
+ * Card Template: Card
+ * Description: Card with icon, accent color and description
+ * Supports: title, excerpt, icon
+ * Order: 10
  *
  * Bootstrap card with Unicons icon, accent color, title and description.
  *
@@ -77,7 +80,7 @@ $lift_class = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 	<div class="card-body p-6 d-flex flex-column">
 
 		<div class="icon btn btn-circle btn-lg btn-soft-<?php echo esc_attr( $color_name ); ?> pe-none mb-5">
-			<i class="uil uil-<?php echo esc_attr( $icon ); ?>"></i>
+			<i class="uil uil-<?php echo esc_attr( $icon ); ?><?php echo ! empty( $display['icon_class'] ) ? ' ' . esc_attr( $display['icon_class'] ) : ''; ?>"></i>
 		</div>
 
 		<?php if ( $display['show_title'] && $title ) : ?>
@@ -87,7 +90,7 @@ $lift_class = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 		<?php endif; ?>
 
 		<?php if ( $excerpt ) : ?>
-			<p class="mb-0"><?php echo esc_html( $excerpt ); ?></p>
+			<p class="<?php echo ! empty( $display['excerpt_class'] ) ? esc_attr( $display['excerpt_class'] ) : 'mb-0'; ?>"><?php echo esc_html( $excerpt ); ?></p>
 		<?php endif; ?>
 
 	</div>

@@ -1,6 +1,9 @@
 <?php
 /**
- * Template: Module Card 2
+ * Card Template: Card 2
+ * Description: Frosted flat card with icon, description and category subtitle
+ * Supports: title, excerpt, icon
+ * Order: 30
  *
  * Frosted card with flat corners, icon, title, description and the
  * module's category shown as an uppercase subtitle.
@@ -80,7 +83,7 @@ if ( $post_id ) {
 	<div class="card-body">
 
 		<div class="icon text-<?php echo esc_attr( $color_name ); ?> mb-4 fs-25">
-			<i class="uil uil-<?php echo esc_attr( $icon ); ?> text-<?php echo esc_attr( $color_name ); ?>"></i>
+			<i class="uil uil-<?php echo esc_attr( $icon ); ?> text-<?php echo esc_attr( $color_name ); ?><?php echo ! empty( $display['icon_class'] ) ? ' ' . esc_attr( $display['icon_class'] ) : ''; ?>"></i>
 		</div>
 
 		<div class="d-flex flex-column">
@@ -92,11 +95,11 @@ if ( $post_id ) {
 			<?php endif; ?>
 
 			<?php if ( $excerpt ) : ?>
-				<p class="text-muted mb-0"><?php echo esc_html( $excerpt ); ?></p>
+				<p class="<?php echo ! empty( $display['excerpt_class'] ) ? esc_attr( $display['excerpt_class'] ) : 'text-muted mb-0'; ?>"><?php echo esc_html( $excerpt ); ?></p>
 			<?php endif; ?>
 
 			<?php if ( $category_name ) : ?>
-				<div class="text-muted text-uppercase fs-sm mt-3"><?php echo esc_html( $category_name ); ?></div>
+				<div class="<?php echo ! empty( $display['category_class'] ) ? esc_attr( $display['category_class'] ) : 'text-muted text-uppercase fs-sm mt-3'; ?>"><?php echo esc_html( $category_name ); ?></div>
 			<?php endif; ?>
 
 		</div>

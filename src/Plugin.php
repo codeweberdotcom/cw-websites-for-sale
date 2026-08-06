@@ -18,91 +18,25 @@ class Plugin {
 		( new Admin\SettingsPage() )->init();
 		( new Admin\ModuleMetaboxes() )->init();
 
-		$this->register_module_card_templates();
-		$this->register_website_card_templates();
+		add_action( 'after_setup_theme', [ $this, 'register_card_templates' ] );
 	}
 
-	private function register_website_card_templates(): void {
-		add_filter( 'codeweber_post_card_templates_registry', function ( $registry ) {
-			$registry['cw_website'] = [
-				'dir'       => 'cw_website',
-				'templates' => [
-					'card' => [
-						'label'       => __( 'Card', 'cw-websites-for-sale' ),
-						'description' => __( 'Browser-bar card: screenshot, category, price and CMS badge', 'cw-websites-for-sale' ),
-						'supports'    => [ 'title' ],
-					],
-					'card-1a' => [
-						'label'       => __( 'Card 1a', 'cw-websites-for-sale' ),
-						'description' => __( 'Browser-bar card with colored category badge and Details / Preview buttons', 'cw-websites-for-sale' ),
-						'supports'    => [ 'title' ],
-					],
-					'card-1c' => [
-						'label'       => __( 'Card 1c', 'cw-websites-for-sale' ),
-						'description' => __( 'Price pill on screenshot, dot category, dark footer with Details / Preview', 'cw-websites-for-sale' ),
-						'supports'    => [ 'title' ],
-					],
-					'card-2a' => [
-						'label'       => __( 'Card 2a', 'cw-websites-for-sale' ),
-						'description' => __( 'Price pill on screenshot, dot category, indigo Details button', 'cw-websites-for-sale' ),
-						'supports'    => [ 'title' ],
-					],
-					'card-3a' => [
-						'label'       => __( 'Card 3a', 'cw-websites-for-sale' ),
-						'description' => __( 'Dark card with violet accent, screenshot, price and Details button', 'cw-websites-for-sale' ),
-						'supports'    => [ 'title' ],
-					],
-					'card-3b' => [
-						'label'       => __( 'Card 3b', 'cw-websites-for-sale' ),
-						'description' => __( 'Dark card with inset screenshot, category / status badges, Details + Preview modal', 'cw-websites-for-sale' ),
-						'supports'    => [ 'title' ],
-					],
-				],
-			];
-			return $registry;
-		} );
+	/**
+	 * Отдать теме папку с card-шаблонами плагина.
+	 *
+	 * Тема сама просканирует `templates/post-cards/<post_type>/*.php`, возьмёт
+	 * label/description/supports/order из шапки каждого файла и покажет их
+	 * в дропдауне Post Grid. Новая карточка = новый .php, без правок здесь.
+	 */
+	public function register_card_templates(): void {
+		if ( ! function_exists( 'cw_register_post_card_templates_dir' ) ) {
+			return;
+		}
 
-		add_filter( 'codeweber_post_card_template_path', function ( $path, $template_name, $post_type ) {
-			if ( $post_type !== 'cw_website' ) {
-				return $path;
-			}
-			$plugin_path = CW_WFS_DIR . 'templates/post-cards/cw_website/' . sanitize_file_name( $template_name ) . '.php';
-			return file_exists( $plugin_path ) ? $plugin_path : $path;
-		}, 10, 3 );
-	}
-
-	private function register_module_card_templates(): void {
-		add_filter( 'codeweber_post_card_templates_registry', function ( $registry ) {
-			$registry['cw_module'] = [
-				'dir'       => 'cw_module',
-				'templates' => [
-					'card' => [
-						'label'       => __( 'Card', 'cw-websites-for-sale' ),
-						'description' => __( 'Card with icon, accent color and description', 'cw-websites-for-sale' ),
-						'supports'    => [ 'title', 'excerpt' ],
-					],
-					'card-sm' => [
-						'label'       => __( 'Card SM', 'cw-websites-for-sale' ),
-						'description' => __( 'Compact horizontal card: icon left, title and description right', 'cw-websites-for-sale' ),
-						'supports'    => [ 'title', 'excerpt' ],
-					],
-					'card-2' => [
-						'label'       => __( 'Card 2', 'cw-websites-for-sale' ),
-						'description' => __( 'Frosted flat card with icon, description and category subtitle', 'cw-websites-for-sale' ),
-						'supports'    => [ 'title', 'excerpt' ],
-					],
-				],
-			];
-			return $registry;
-		} );
-
-		add_filter( 'codeweber_post_card_template_path', function ( $path, $template_name, $post_type ) {
-			if ( $post_type !== 'cw_module' ) {
-				return $path;
-			}
-			$plugin_path = CW_WFS_DIR . 'templates/post-cards/cw_module/' . sanitize_file_name( $template_name ) . '.php';
-			return file_exists( $plugin_path ) ? $plugin_path : $path;
-		}, 10, 3 );
+		cw_register_post_card_templates_dir( CW_WFS_DIR . 'templates/post-cards/', [
+			'text_domain' => 'cw-websites-for-sale',
+			'label'       => 'cw-websites-for-sale',
+		] );
 	}
 
 	// ─────────────────────────────────────────────────────────────────────────

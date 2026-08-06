@@ -1,6 +1,9 @@
 <?php
 /**
- * Template: Website Card 1a
+ * Card Template: Card 1a
+ * Description: Browser-bar card with colored category badge and Details / Preview buttons
+ * Supports: title
+ * Order: 20
  *
  * Browser-bar card with colored category badge, status badge, Details + Preview buttons.
  *

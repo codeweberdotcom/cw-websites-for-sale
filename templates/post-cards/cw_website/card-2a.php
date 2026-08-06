@@ -1,6 +1,9 @@
 <?php
 /**
- * Template: Website Card 2a
+ * Card Template: Card 2a
+ * Description: Price pill on screenshot, dot category, indigo Details button
+ * Supports: title
+ * Order: 40
  *
  * Price pill overlay on screenshot, colored dot category, Details + Preview-icon button.
  *

@@ -1,6 +1,9 @@
 <?php
 /**
- * Template: Module Card SM
+ * Card Template: Card SM
+ * Description: Compact horizontal card: icon left, title and description right
+ * Supports: title, excerpt, icon
+ * Order: 20
  *
  * Compact horizontal card: icon on the left, title + description on the right.
  *
@@ -77,7 +80,7 @@ $lift_class = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 		<div class="d-flex flex-row align-items-center">
 
 			<div class="icon btn btn-circle btn-soft-<?php echo esc_attr( $color_name ); ?> fs-20 pe-none flex-shrink-0 me-3">
-				<i class="uil uil-<?php echo esc_attr( $icon ); ?>"></i>
+				<i class="uil uil-<?php echo esc_attr( $icon ); ?><?php echo ! empty( $display['icon_class'] ) ? ' ' . esc_attr( $display['icon_class'] ) : ''; ?>"></i>
 			</div>
 
 			<div>
@@ -88,7 +91,7 @@ $lift_class = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 				<?php endif; ?>
 
 				<?php if ( $excerpt ) : ?>
-					<p class="fs-14 lh-sm mb-0"><?php echo esc_html( $excerpt ); ?></p>
+					<p class="<?php echo ! empty( $display['excerpt_class'] ) ? esc_attr( $display['excerpt_class'] ) : 'fs-14 lh-sm mb-0'; ?>"><?php echo esc_html( $excerpt ); ?></p>
 				<?php endif; ?>
 			</div>
 

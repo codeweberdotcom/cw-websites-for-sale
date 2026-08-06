@@ -1,6 +1,9 @@
 <?php
 /**
- * Template: Website Card
+ * Card Template: Card
+ * Description: Browser-bar card: screenshot, category, price and CMS badge
+ * Supports: title
+ * Order: 10
  *
  * Browser-bar card: screenshot with URL bar, status badge, category, title, price/cms.
  *

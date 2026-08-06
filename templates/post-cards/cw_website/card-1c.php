@@ -1,6 +1,9 @@
 <?php
 /**
- * Template: Website Card 1c
+ * Card Template: Card 1c
+ * Description: Price pill on screenshot, dot category, dark footer with Details / Preview
+ * Supports: title
+ * Order: 30
  *
  * Price pill overlay on screenshot, colored dot category, dark footer with Details/Preview.
  *

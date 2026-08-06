@@ -1,6 +1,9 @@
 <?php
 /**
- * Template: Website Card 3b
+ * Card Template: Card 3b
+ * Description: Dark card with inset screenshot, category / status badges, Details + Preview modal
+ * Supports: title
+ * Order: 60
  *
  * Dark card with inset screenshot, category/status badges, price, Details + Preview modal buttons.
  *

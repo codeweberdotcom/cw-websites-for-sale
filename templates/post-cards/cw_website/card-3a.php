@@ -1,6 +1,9 @@
 <?php
 /**
- * Template: Website Card 3a
+ * Card Template: Card 3a
+ * Description: Dark card with violet accent, screenshot, price and Details button
+ * Supports: title
+ * Order: 50
  *
  * Dark card with violet accent: screenshot, colored dot category, title, price, Details + Preview icon.
  *
