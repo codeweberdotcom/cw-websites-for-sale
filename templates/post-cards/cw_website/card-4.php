@@ -34,7 +34,7 @@ $display = function_exists( 'cw_get_post_card_display_settings' )
 $template_args = wp_parse_args( $template_args ?? [], [
 	'border_radius' => 'rounded',
 	'enable_lift'   => false,
-	'screen_height' => 275,
+	'screen_height' => 197,
 ] );
 
 $border_radius = class_exists( 'Codeweber_Options' )
@@ -42,12 +42,6 @@ $border_radius = class_exists( 'Codeweber_Options' )
 	: $template_args['border_radius'];
 
 $btn_style = class_exists( 'Codeweber_Options' ) ? Codeweber_Options::style( 'button' ) : '';
-
-$status_cfg = [
-	'for_sale' => [ 'label' => esc_html__( 'For Sale', 'cw-websites-for-sale' ), 'class' => 'bg-success' ],
-	'sold'     => [ 'label' => esc_html__( 'Sold', 'cw-websites-for-sale' ),     'class' => 'bg-secondary' ],
-	'reserved' => [ 'label' => esc_html__( 'Reserved', 'cw-websites-for-sale' ), 'class' => 'bg-warning text-dark' ],
-];
 
 $post_id     = $post_data['id'] ?? 0;
 $title       = $post_data['title'] ?? '';
@@ -57,11 +51,9 @@ $website_url = get_post_meta( $post_id, '_ws_url', true );
 $screenshot  = (int) get_post_meta( $post_id, '_ws_screenshot', true );
 $price       = get_post_meta( $post_id, '_ws_price', true );
 $launch_time = get_post_meta( $post_id, '_ws_launch_time', true );
-$status      = get_post_meta( $post_id, '_ws_status', true ) ?: 'for_sale';
 
 $cats     = $post_id ? get_the_terms( $post_id, 'website_category' ) : [];
 $cat_name = ( $cats && ! is_wp_error( $cats ) ) ? $cats[0]->name : '';
-$st       = $status_cfg[ $status ] ?? $status_cfg['for_sale'];
 
 $tags       = $post_id ? get_the_terms( $post_id, 'website_tag' ) : [];
 $tag_names  = ( $tags && ! is_wp_error( $tags ) ) ? wp_list_pluck( array_slice( $tags, 0, 3 ), 'name' ) : [];
@@ -88,15 +80,13 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 				else : ?>
 				<div class="w-100 h-100 bg-soft-ash"></div>
 				<?php endif; ?>
-				<span class="badge <?php echo esc_attr( $st['class'] ); ?> position-absolute top-0 start-0 m-2 z-2"><?php echo $st['label']; ?></span>
+				<?php if ( $cat_name ) : ?>
+				<span class="badge bg-dark bg-opacity-75 text-white position-absolute top-0 start-0 m-2 z-2"><?php echo esc_html( $cat_name ); ?></span>
+				<?php endif; ?>
 			</div>
 		</div>
 
 		<div class="col-12 col-md-7 p-4 p-md-5 d-flex flex-column justify-content-center gap-3">
-
-			<?php if ( $cat_name ) : ?>
-			<div class="text-success text-uppercase fs-sm fw-bold"><?php echo esc_html( $cat_name ); ?></div>
-			<?php endif; ?>
 
 			<?php if ( $display['show_title'] && $title ) : ?>
 			<<?php echo esc_attr( $title_tag ); ?> class="<?php echo esc_attr( $title_class ); ?>"><?php echo esc_html( $title ); ?></<?php echo esc_attr( $title_tag ); ?>>
@@ -111,12 +101,12 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 			<?php endif; ?>
 
 			<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-2">
-				<div>
-					<?php if ( $launch_time ) : ?>
-					<div class="text-white-50 fs-sm"><?php echo esc_html( $launch_time ); ?></div>
-					<?php endif; ?>
+				<div class="d-flex align-items-center gap-2">
 					<?php if ( $price ) : ?>
-					<div class="text-white fs-22 fw-bold"><?php echo esc_html( $price ); ?> ₽</div>
+					<span class="text-white fs-22 fw-bold"><?php echo esc_html( $price ); ?> ₽</span>
+					<?php endif; ?>
+					<?php if ( $launch_time ) : ?>
+					<span class="text-white-50 fs-sm"><?php echo esc_html( $launch_time ); ?></span>
 					<?php endif; ?>
 				</div>
 				<div class="d-flex gap-2">
