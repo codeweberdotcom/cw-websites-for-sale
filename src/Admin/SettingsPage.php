@@ -206,6 +206,11 @@ class SettingsPage {
 				'description' => __( 'Dark page, inset rounded screenshot with category badge, white primary button + outline preview.', 'cw-websites-for-sale' ),
 				'preview'     => $this->svg_preview_3b(),
 			],
+			'4' => [
+				'title'       => __( 'Split — Dark Panel', 'cw-websites-for-sale' ),
+				'description' => __( 'Wide row: screenshot left, dark panel right with category, title, feature tags and price/actions — stacks on mobile.', 'cw-websites-for-sale' ),
+				'preview'     => $this->svg_preview_4(),
+			],
 		];
 	}
 
@@ -424,6 +429,20 @@ class SettingsPage {
 			<rect x="29" y="40" width="7"  height="7"  rx="1" fill="#1e293b"/>
 			<rect x="68" y="40" width="7"  height="7"  rx="1" fill="#1e293b"/>
 			<rect x="107" y="40" width="7" height="7"  rx="1" fill="#1e293b"/>
+		</svg>';
+	}
+
+	private function svg_preview_4(): string {
+		return '<svg width="120" height="80" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+			<rect x="4"  y="4"  width="48" height="72" rx="2" fill="#c3c4c7"/>
+			<rect x="56" y="4"  width="60" height="72" rx="2" fill="#1e293b"/>
+			<rect x="64" y="14" width="26" height="4"  rx="1" fill="#4ade80"/>
+			<rect x="64" y="24" width="44" height="6"  rx="1" fill="#ffffff"/>
+			<rect x="64" y="36" width="20" height="6"  rx="3" fill="none" stroke="#94a3b8" stroke-width="1"/>
+			<rect x="87" y="36" width="20" height="6"  rx="3" fill="none" stroke="#94a3b8" stroke-width="1"/>
+			<rect x="64" y="56" width="16" height="4"  rx="1" fill="#94a3b8"/>
+			<rect x="64" y="62" width="20" height="6"  rx="1" fill="#ffffff"/>
+			<rect x="88" y="60" width="18" height="10" rx="2" fill="#fbbf24"/>
 		</svg>';
 	}
 }

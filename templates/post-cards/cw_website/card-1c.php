@@ -30,6 +30,7 @@ $display = function_exists( 'cw_get_post_card_display_settings' )
 $template_args = wp_parse_args( $template_args ?? [], [
 	'border_radius' => 'rounded',
 	'enable_lift'   => false,
+	'screen_height' => 176,
 ] );
 
 $border_radius = class_exists( 'Codeweber_Options' )
@@ -72,34 +73,25 @@ if ( $display['title_length'] > 0 && mb_strlen( $title ) > $display['title_lengt
 }
 
 $title_tag   = isset( $display['title_tag'] ) ? sanitize_html_class( $display['title_tag'] ) : 'h3';
-$title_class = ! empty( $display['title_class'] ) ? esc_attr( $display['title_class'] ) : 'h6 fw-bold text-dark mb-0';
+$title_class = ! empty( $display['title_class'] ) ? esc_attr( $display['title_class'] ) : 'fs-20 fw-bold text-dark mb-0';
 $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 ?>
 
 <article class="card shadow-sm border-0<?php echo $border_radius ? ' ' . esc_attr( $border_radius ) : ''; ?> overflow-hidden h-100<?php echo $lift_class; ?>">
 
-	<div class="position-relative overflow-hidden" style="height:176px;">
+	<div class="cw-it-screen overflow-hidden position-relative" style="height:<?php echo (int) $template_args['screen_height']; ?>px;">
 		<?php if ( $screenshot ) :
 			echo wp_get_attachment_image( $screenshot, 'full', false, [
 				'alt'   => esc_attr( $title ),
-				'class' => 'd-block w-100',
-				'style' => 'height:100%;object-fit:cover;object-position:top center;',
+				'class' => 'cw-it-screenshot d-block w-100 h-auto',
 			] );
 		else : ?>
 		<div class="w-100 h-100 bg-soft-ash"></div>
 		<?php endif; ?>
 		<?php if ( $price ) : ?>
-		<span class="bg-white text-dark" style="position:absolute;top:12px;right:12px;display:inline-flex;align-items:center;height:30px;padding:0 14px;border-radius:999px;font-size:14px;font-weight:800;box-shadow:0 3px 10px rgba(15,23,42,.2);z-index:2;"><?php echo esc_html( $price ); ?> ₽</span>
+		<span class="badge bg-white text-dark rounded-pill shadow-sm position-absolute top-0 end-0 m-2 z-2 fs-14 fw-bold px-3 py-2"><?php echo esc_html( $price ); ?> ₽</span>
 		<?php endif; ?>
-		<span class="badge <?php echo esc_attr( $st['class'] ); ?> position-absolute top-0 start-0 m-2" style="z-index:2;"><?php echo $st['label']; ?></span>
-		<?php if ( $website_url ) : ?>
-		<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener"
-			class="position-absolute d-flex align-items-center justify-content-center text-decoration-none"
-			style="inset:0;background:rgba(15,23,42,.5);opacity:0;transition:opacity .18s;"
-			onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='0'">
-			<span class="rounded-pill fw-bold px-4 py-2 bg-white text-dark" style="font-size:14px;"><i class="uil uil-play-circle me-2"></i><?php esc_html_e( 'Live Preview', 'cw-websites-for-sale' ); ?></span>
-		</a>
-		<?php endif; ?>
+		<span class="badge <?php echo esc_attr( $st['class'] ); ?> position-absolute top-0 start-0 m-2 z-2"><?php echo $st['label']; ?></span>
 	</div>
 
 	<div class="card-body d-flex flex-column gap-3 p-4">
@@ -113,16 +105,14 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 		</div>
 
 		<?php if ( $display['show_title'] && $title ) : ?>
-		<<?php echo esc_attr( $title_tag ); ?> class="<?php echo esc_attr( $title_class ); ?>" style="font-size:20px;letter-spacing:-.02em;"><?php echo esc_html( $title ); ?></<?php echo esc_attr( $title_tag ); ?>>
+		<<?php echo esc_attr( $title_tag ); ?> class="<?php echo esc_attr( $title_class ); ?>"><?php echo esc_html( $title ); ?></<?php echo esc_attr( $title_tag ); ?>>
 		<?php endif; ?>
 	</div>
 
-	<div class="bg-soft-ash mt-auto" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;">
-		<a href="<?php echo esc_url( $permalink ); ?>" class="bg-soft-ash text-dark text-decoration-none fw-bold" style="display:flex;align-items:center;justify-content:center;height:48px;font-size:14px;" onmouseenter="this.style.opacity='.75'" onmouseleave="this.style.opacity=''"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
+	<div class="d-flex mt-auto">
+		<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-primary text-dark rounded-0 flex-fill"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
 		<?php if ( $website_url ) : ?>
-		<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" class="bg-soft-ash text-muted text-decoration-none fw-bold border-start" style="display:flex;align-items:center;justify-content:center;height:48px;font-size:14px;" onmouseenter="this.style.opacity='.75'" onmouseleave="this.style.opacity=''"><i class="uil uil-play-circle me-2"></i><?php esc_html_e( 'Preview', 'cw-websites-for-sale' ); ?></a>
-		<?php else : ?>
-		<span></span>
+		<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" class="btn btn-outline-primary rounded-0 flex-fill"><i class="uil uil-play-circle me-2"></i><?php esc_html_e( 'Preview', 'cw-websites-for-sale' ); ?></a>
 		<?php endif; ?>
 	</div>
 
