@@ -86,6 +86,11 @@ class Plugin {
 						'description' => __( 'Compact horizontal card: icon left, title and description right', 'cw-websites-for-sale' ),
 						'supports'    => [ 'title', 'excerpt' ],
 					],
+					'card-2' => [
+						'label'       => __( 'Card 2', 'cw-websites-for-sale' ),
+						'description' => __( 'Frosted flat card with icon, description and category subtitle', 'cw-websites-for-sale' ),
+						'supports'    => [ 'title', 'excerpt' ],
+					],
 				],
 			];
 			return $registry;
