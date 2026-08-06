@@ -67,7 +67,7 @@ $title_class = ! empty( $display['title_class'] ) ? esc_attr( $display['title_cl
 $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 ?>
 
-<article class="card border-0 bg-frost overflow-hidden h-100<?php echo $border_radius ? ' ' . esc_attr( $border_radius ) : ''; ?><?php echo $lift_class; ?>">
+<article class="card border border-muted bg-frost overflow-hidden h-100<?php echo $border_radius ? ' ' . esc_attr( $border_radius ) : ''; ?><?php echo $lift_class; ?>">
 	<div class="row g-0 h-100">
 
 		<div class="col-12 col-md-5 position-relative">
