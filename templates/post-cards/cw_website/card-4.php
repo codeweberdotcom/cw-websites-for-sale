@@ -75,7 +75,7 @@ $title_class = ! empty( $display['title_class'] ) ? esc_attr( $display['title_cl
 $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 ?>
 
-<article class="card border-0 overflow-hidden h-100<?php echo $border_radius ? ' ' . esc_attr( $border_radius ) : ''; ?><?php echo $lift_class; ?>">
+<article class="card border-0 bg-navy overflow-hidden h-100<?php echo $border_radius ? ' ' . esc_attr( $border_radius ) : ''; ?><?php echo $lift_class; ?>">
 	<div class="row g-0 h-100">
 
 		<div class="col-12 col-md-5 position-relative">
@@ -92,7 +92,7 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 			</div>
 		</div>
 
-		<div class="col-12 col-md-7 bg-navy p-4 p-md-5 d-flex flex-column justify-content-center gap-3">
+		<div class="col-12 col-md-7 p-4 p-md-5 d-flex flex-column justify-content-center gap-3">
 
 			<?php if ( $cat_name ) : ?>
 			<div class="text-success text-uppercase fs-sm fw-bold"><?php echo esc_html( $cat_name ); ?></div>
