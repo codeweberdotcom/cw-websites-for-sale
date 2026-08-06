@@ -16,6 +16,8 @@ if ( ! isset( $post_data ) || ! $post_data ) {
 	return;
 }
 
+\CW\WebsitesForSale\Plugin::request_preview_modal();
+
 $display = function_exists( 'cw_get_post_card_display_settings' )
 	? cw_get_post_card_display_settings( $display_settings ?? [] )
 	: wp_parse_args( $display_settings ?? [], [
@@ -113,7 +115,15 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 		<div class="d-flex gap-2 mt-auto">
 			<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-primary fw-bold flex-fill<?php echo esc_attr( $btn_style ); ?>"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
 			<?php if ( $website_url ) : ?>
-			<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" class="btn btn-outline-secondary<?php echo esc_attr( $btn_style ); ?>" title="<?php esc_attr_e( 'Preview', 'cw-websites-for-sale' ); ?>"><i class="uil uil-play-circle"></i></a>
+			<button type="button"
+				class="btn btn-outline-secondary<?php echo esc_attr( $btn_style ); ?>"
+				title="<?php esc_attr_e( 'Preview', 'cw-websites-for-sale' ); ?>"
+				data-bs-toggle="modal"
+				data-bs-target="#cw-preview-modal"
+				data-website-url="<?php echo esc_url( $website_url ); ?>"
+				data-website-title="<?php echo esc_attr( wp_strip_all_tags( $title ) ); ?>">
+				<i class="uil uil-play-circle"></i>
+			</button>
 			<?php endif; ?>
 		</div>
 	</div>

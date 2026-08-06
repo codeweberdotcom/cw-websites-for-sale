@@ -16,6 +16,8 @@ if ( ! isset( $post_data ) || ! $post_data ) {
 	return;
 }
 
+\CW\WebsitesForSale\Plugin::request_preview_modal();
+
 $display = function_exists( 'cw_get_post_card_display_settings' )
 	? cw_get_post_card_display_settings( $display_settings ?? [] )
 	: wp_parse_args( $display_settings ?? [], [
@@ -92,12 +94,16 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ';transform:translateY
 		<?php endif; ?>
 		<span class="badge <?php echo esc_attr( $st['class'] ); ?> position-absolute top-0 start-0 m-2" style="z-index:2;"><?php echo $st['label']; ?></span>
 		<?php if ( $website_url ) : ?>
-		<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener"
-			class="position-absolute d-flex align-items-center justify-content-center text-decoration-none"
+		<button type="button"
+			class="position-absolute d-flex align-items-center justify-content-center border-0"
 			style="inset:0;background:rgba(11,17,32,.6);opacity:0;transition:opacity .18s;"
-			onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='0'">
+			onmouseenter="this.style.opacity='1'" onmouseleave="this.style.opacity='0'"
+			data-bs-toggle="modal"
+			data-bs-target="#cw-preview-modal"
+			data-website-url="<?php echo esc_url( $website_url ); ?>"
+			data-website-title="<?php echo esc_attr( wp_strip_all_tags( $title ) ); ?>">
 			<span class="rounded-pill fw-bold px-4 py-2 bg-primary text-dark" style="font-size:14px;"><i class="uil uil-play-circle me-2"></i><?php esc_html_e( 'Live Preview', 'cw-websites-for-sale' ); ?></span>
-		</a>
+		</button>
 		<?php endif; ?>
 	</div>
 
@@ -123,7 +129,16 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ';transform:translateY
 	<div class="px-4 pb-4" style="display:grid;grid-template-columns:1fr auto;gap:8px;">
 		<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-primary fw-bold<?php echo esc_attr( $btn_style ); ?>" style="height:46px;display:flex;align-items:center;justify-content:center;"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
 		<?php if ( $website_url ) : ?>
-		<a href="<?php echo esc_url( $website_url ); ?>" target="_blank" rel="noopener" title="<?php esc_attr_e( 'Preview', 'cw-websites-for-sale' ); ?>" class="btn btn-outline-secondary<?php echo esc_attr( $btn_style ); ?>" style="width:46px;height:46px;display:flex;align-items:center;justify-content:center;font-size:18px;"><i class="uil uil-play-circle"></i></a>
+		<button type="button"
+			title="<?php esc_attr_e( 'Preview', 'cw-websites-for-sale' ); ?>"
+			class="btn btn-outline-secondary<?php echo esc_attr( $btn_style ); ?>"
+			style="width:46px;height:46px;display:flex;align-items:center;justify-content:center;font-size:18px;"
+			data-bs-toggle="modal"
+			data-bs-target="#cw-preview-modal"
+			data-website-url="<?php echo esc_url( $website_url ); ?>"
+			data-website-title="<?php echo esc_attr( wp_strip_all_tags( $title ) ); ?>">
+			<i class="uil uil-play-circle"></i>
+		</button>
 		<?php endif; ?>
 	</div>
 
