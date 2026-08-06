@@ -96,7 +96,7 @@ if ( $post_id ) {
 			<?php endif; ?>
 
 			<?php if ( $category_name ) : ?>
-				<div class="text-muted text-uppercase mt-3"><?php echo esc_html( $category_name ); ?></div>
+				<div class="text-muted text-uppercase fs-sm mt-3"><?php echo esc_html( $category_name ); ?></div>
 			<?php endif; ?>
 
 		</div>
