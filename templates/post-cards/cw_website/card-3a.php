@@ -127,11 +127,11 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ';transform:translateY
 	</div>
 
 	<div class="px-4 pb-4" style="display:grid;grid-template-columns:1fr auto;gap:8px;">
-		<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-primary fw-bold<?php echo esc_attr( $btn_style ); ?>" style="height:46px;display:flex;align-items:center;justify-content:center;"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
+		<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-primary fw-bold has-ripple<?php echo esc_attr( $btn_style ); ?>" style="height:46px;display:flex;align-items:center;justify-content:center;"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
 		<?php if ( $website_url ) : ?>
 		<button type="button"
 			title="<?php esc_attr_e( 'Preview', 'cw-websites-for-sale' ); ?>"
-			class="btn btn-outline-secondary<?php echo esc_attr( $btn_style ); ?>"
+			class="btn btn-outline-secondary has-ripple<?php echo esc_attr( $btn_style ); ?>"
 			style="width:46px;height:46px;display:flex;align-items:center;justify-content:center;font-size:18px;"
 			data-bs-toggle="modal"
 			data-bs-target="#cw-preview-modal"

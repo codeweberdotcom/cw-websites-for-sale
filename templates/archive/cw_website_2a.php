@@ -36,18 +36,18 @@ $block_attrs = wp_json_encode( [
 			<?php if ( $has_cats ) : ?>
 			<div class="isotope-filter filter cw-wfs-cat-filters mb-4">
 				<ul>
-					<li><a class="filter-item active" data-cat-id="0"><?php esc_html_e( 'All', 'cw-websites-for-sale' ); ?></a></li>
+					<li><a class="filter-item active has-ripple" data-cat-id="0"><?php esc_html_e( 'All', 'cw-websites-for-sale' ); ?></a></li>
 					<?php foreach ( $cat_terms as $term ) : ?>
-					<li><a class="filter-item" data-cat-id="<?php echo esc_attr( $term->term_id ); ?>"><?php echo esc_html( $term->name ); ?></a></li>
+					<li><a class="filter-item has-ripple" data-cat-id="<?php echo esc_attr( $term->term_id ); ?>"><?php echo esc_html( $term->name ); ?></a></li>
 					<?php endforeach; ?>
 				</ul>
 			</div>
 			<?php endif; ?>
 			<?php if ( $has_tags ) : ?>
 			<div class="d-flex flex-wrap gap-2 cw-wfs-tag-filters">
-				<span class="badge bg-primary cw-wfs-tag-btn active" data-tag-id="0"><?php esc_html_e( 'All tags', 'cw-websites-for-sale' ); ?></span>
+				<span class="badge bg-primary cw-wfs-tag-btn active has-ripple" data-tag-id="0"><?php esc_html_e( 'All tags', 'cw-websites-for-sale' ); ?></span>
 				<?php foreach ( $tag_terms as $term ) : ?>
-				<span class="badge bg-soft-ash text-ash cw-wfs-tag-btn" data-tag-id="<?php echo esc_attr( $term->term_id ); ?>"><?php echo esc_html( $term->name ); ?></span>
+				<span class="badge bg-soft-ash text-ash cw-wfs-tag-btn has-ripple" data-tag-id="<?php echo esc_attr( $term->term_id ); ?>"><?php echo esc_html( $term->name ); ?></span>
 				<?php endforeach; ?>
 			</div>
 			<?php endif; ?>

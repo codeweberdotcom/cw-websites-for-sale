@@ -113,10 +113,10 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 		<?php endif; ?>
 
 		<div class="d-flex gap-2 mt-auto">
-			<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-primary fw-bold flex-fill<?php echo esc_attr( $btn_style ); ?>"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
+			<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-primary fw-bold has-ripple flex-fill<?php echo esc_attr( $btn_style ); ?>"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
 			<?php if ( $website_url ) : ?>
 			<button type="button"
-				class="btn btn-outline-secondary<?php echo esc_attr( $btn_style ); ?>"
+				class="btn btn-outline-secondary has-ripple<?php echo esc_attr( $btn_style ); ?>"
 				title="<?php esc_attr_e( 'Preview', 'cw-websites-for-sale' ); ?>"
 				data-bs-toggle="modal"
 				data-bs-target="#cw-preview-modal"

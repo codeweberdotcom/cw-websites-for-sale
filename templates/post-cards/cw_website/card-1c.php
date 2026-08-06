@@ -112,10 +112,10 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 	</div>
 
 	<div class="d-flex mt-auto">
-		<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-primary text-dark rounded-0 flex-fill"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
+		<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-primary text-dark rounded-0 has-ripple flex-fill"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
 		<?php if ( $website_url ) : ?>
 		<button type="button"
-			class="btn btn-outline-primary rounded-0 flex-fill"
+			class="btn btn-outline-primary rounded-0 has-ripple flex-fill"
 			data-bs-toggle="modal"
 			data-bs-target="#cw-preview-modal"
 			data-website-url="<?php echo esc_url( $website_url ); ?>"

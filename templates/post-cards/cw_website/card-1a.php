@@ -137,10 +137,10 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 			<div class="small text-muted mt-1"><?php echo esc_html__( 'Term:', 'cw-websites-for-sale' ) . ' ' . esc_html( $launch_time ); ?></div>
 			<?php endif; ?>
 			<div class="d-grid mt-3" style="grid-template-columns:1fr auto;gap:8px;display:grid;">
-				<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-primary fw-bold<?php echo esc_attr( $btn_style ); ?>" style="height:42px;display:flex;align-items:center;justify-content:center;"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
+				<a href="<?php echo esc_url( $permalink ); ?>" class="btn btn-primary fw-bold has-ripple<?php echo esc_attr( $btn_style ); ?>" style="height:42px;display:flex;align-items:center;justify-content:center;"><?php esc_html_e( 'Details', 'cw-websites-for-sale' ); ?></a>
 				<?php if ( $website_url ) : ?>
 				<button type="button"
-					class="btn btn-outline-secondary fw-bold<?php echo esc_attr( $btn_style ); ?>"
+					class="btn btn-outline-secondary fw-bold has-ripple<?php echo esc_attr( $btn_style ); ?>"
 					style="height:42px;display:flex;align-items:center;justify-content:center;padding:0 12px;"
 					data-bs-toggle="modal"
 					data-bs-target="#cw-preview-modal"
