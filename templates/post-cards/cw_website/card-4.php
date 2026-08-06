@@ -34,7 +34,7 @@ $display = function_exists( 'cw_get_post_card_display_settings' )
 $template_args = wp_parse_args( $template_args ?? [], [
 	'border_radius' => 'rounded',
 	'enable_lift'   => false,
-	'screen_height' => 260,
+	'screen_height' => 275,
 ] );
 
 $border_radius = class_exists( 'Codeweber_Options' )
