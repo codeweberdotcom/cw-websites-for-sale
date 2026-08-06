@@ -77,7 +77,7 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 	<div class="row g-0 h-100">
 
 		<div class="col-12 col-md-5 position-relative">
-			<div class="cw-it-screen overflow-hidden position-relative h-100" style="height:<?php echo (int) $template_args['screen_height']; ?>px;">
+			<div class="cw-it-screen overflow-hidden position-relative" style="height:<?php echo (int) $template_args['screen_height']; ?>px;">
 				<?php if ( $screenshot ) :
 					echo wp_get_attachment_image( $screenshot, 'full', false, [
 						'alt'   => esc_attr( $title ),
