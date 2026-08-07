@@ -9,6 +9,7 @@ class Plugin {
 		add_action( 'init',               [ $this, 'register_taxonomies' ] );
 		add_action( 'init',               [ $this, 'register_cpt_module' ] );
 		add_action( 'init',               [ $this, 'register_taxonomy_module_category' ] );
+		add_action( 'init',               [ $this, 'register_taxonomy_module_tag' ] );
 		add_action( 'widgets_init',       [ $this, 'register_widget' ] );
 		add_filter( 'template_include',   [ $this, 'template_include' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
@@ -167,7 +168,7 @@ class Plugin {
 			'rewrite'             => false,
 			'query_var'           => false,
 			'supports'            => [ 'title', 'editor' ],
-			'taxonomies'          => [ 'module_category' ],
+			'taxonomies'          => [ 'module_category', 'module_tag' ],
 			'menu_icon'           => 'dashicons-grid-view',
 			'menu_position'       => 7,
 			'show_in_graphql'     => false,
@@ -193,6 +194,30 @@ class Plugin {
 			'show_in_rest'       => true,
 			'show_in_nav_menus'  => false,
 			'hierarchical'       => true,
+			'rewrite'            => false,
+			'query_var'          => false,
+		] );
+	}
+
+	public function register_taxonomy_module_tag(): void {
+		register_taxonomy( 'module_tag', [ 'cw_module' ], [
+			'label'              => esc_html__( 'Module Tags', 'cw-websites-for-sale' ),
+			'labels'             => [
+				'name'          => esc_html__( 'Module Tags', 'cw-websites-for-sale' ),
+				'singular_name' => esc_html__( 'Module Tag', 'cw-websites-for-sale' ),
+				'all_items'     => esc_html__( 'All Tags', 'cw-websites-for-sale' ),
+				'add_new_item'  => esc_html__( 'Add New Tag', 'cw-websites-for-sale' ),
+				'edit_item'     => esc_html__( 'Edit Tag', 'cw-websites-for-sale' ),
+				'new_item'      => esc_html__( 'New Tag', 'cw-websites-for-sale' ),
+				'search_items'  => esc_html__( 'Search Tags', 'cw-websites-for-sale' ),
+				'not_found'     => esc_html__( 'No tags found', 'cw-websites-for-sale' ),
+			],
+			'public'             => false,
+			'publicly_queryable' => false,
+			'show_ui'            => true,
+			'show_in_rest'       => true,
+			'show_in_nav_menus'  => false,
+			'hierarchical'       => false,
 			'rewrite'            => false,
 			'query_var'          => false,
 		] );
