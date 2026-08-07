@@ -10,6 +10,8 @@ class Plugin {
 		add_action( 'init',               [ $this, 'register_cpt_module' ] );
 		add_action( 'init',               [ $this, 'register_taxonomy_module_category' ] );
 		add_action( 'init',               [ $this, 'register_taxonomy_module_tag' ] );
+		add_action( 'restrict_manage_posts', [ $this, 'module_admin_filters' ] );
+		add_action( 'parse_query',           [ $this, 'module_admin_filter_query' ] );
 		add_action( 'widgets_init',       [ $this, 'register_widget' ] );
 		add_filter( 'template_include',   [ $this, 'template_include' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_scripts' ] );
@@ -193,6 +195,8 @@ class Plugin {
 			'show_ui'            => true,
 			'show_in_rest'       => true,
 			'show_in_nav_menus'  => false,
+			'show_admin_column'  => true,
+			'show_in_quick_edit' => true,
 			'hierarchical'       => true,
 			'rewrite'            => false,
 			'query_var'          => false,
@@ -217,10 +221,74 @@ class Plugin {
 			'show_ui'            => true,
 			'show_in_rest'       => true,
 			'show_in_nav_menus'  => false,
+			'show_admin_column'  => true,
+			'show_in_quick_edit' => true,
 			'hierarchical'       => false,
 			'rewrite'            => false,
 			'query_var'          => false,
 		] );
+	}
+
+	// ─────────────────────────────────────────────────────────────────────────
+	// Admin: taxonomy filters on the Modules list table
+	// ─────────────────────────────────────────────────────────────────────────
+
+	public function module_admin_filters( string $post_type ): void {
+		if ( 'cw_module' !== $post_type ) {
+			return;
+		}
+
+		foreach ( [ 'module_category', 'module_tag' ] as $taxonomy ) {
+			$tax = get_taxonomy( $taxonomy );
+			if ( ! $tax ) {
+				continue;
+			}
+
+			$selected = isset( $_GET[ $taxonomy ] ) ? sanitize_text_field( wp_unslash( $_GET[ $taxonomy ] ) ) : '';
+
+			wp_dropdown_categories( [
+				'show_option_all' => $tax->labels->all_items,
+				'taxonomy'        => $taxonomy,
+				'name'            => $taxonomy,
+				'value_field'     => 'slug',
+				'selected'        => $selected,
+				'orderby'         => 'name',
+				'hierarchical'    => $tax->hierarchical,
+				'show_count'      => true,
+				'hide_empty'      => true,
+			] );
+		}
+	}
+
+	public function module_admin_filter_query( \WP_Query $query ): void {
+		global $pagenow;
+
+		if ( ! is_admin() || 'edit.php' !== $pagenow || ! $query->is_main_query() ) {
+			return;
+		}
+
+		if ( 'cw_module' !== ( $_GET['post_type'] ?? '' ) ) {
+			return;
+		}
+
+		$tax_query = [];
+
+		foreach ( [ 'module_category', 'module_tag' ] as $taxonomy ) {
+			$slug = isset( $_GET[ $taxonomy ] ) ? sanitize_text_field( wp_unslash( $_GET[ $taxonomy ] ) ) : '';
+			if ( '' === $slug || '0' === $slug ) {
+				continue;
+			}
+			$tax_query[] = [
+				'taxonomy' => $taxonomy,
+				'field'    => 'slug',
+				'terms'    => $slug,
+			];
+		}
+
+		if ( $tax_query ) {
+			$existing = (array) $query->get( 'tax_query' );
+			$query->set( 'tax_query', array_merge( $existing, $tax_query ) );
+		}
 	}
 
 	// ─────────────────────────────────────────────────────────────────────────
