@@ -70,7 +70,7 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 <article class="card border-0 bg-frost overflow-hidden h-100<?php echo $border_radius ? ' ' . esc_attr( $border_radius ) : ''; ?><?php echo $lift_class; ?>">
 	<div class="row g-0 h-100">
 
-		<div class="col-12 col-md-5 position-relative">
+		<div class="col-12 col-md-6 position-relative">
 			<div class="cw-it-screen overflow-hidden position-relative" style="height:<?php echo (int) $template_args['screen_height']; ?>px;">
 				<?php if ( $screenshot ) :
 					echo wp_get_attachment_image( $screenshot, 'full', false, [
@@ -86,7 +86,7 @@ $lift_class  = ! empty( $template_args['enable_lift'] ) ? ' lift' : '';
 			</div>
 		</div>
 
-		<div class="col-12 col-md-7 p-4 p-md-5 d-flex flex-column justify-content-center gap-3">
+		<div class="col-12 col-md-6 p-4 p-md-5 d-flex flex-column justify-content-center gap-3">
 
 			<?php if ( $display['show_title'] && $title ) : ?>
 			<<?php echo esc_attr( $title_tag ); ?> class="<?php echo esc_attr( $title_class ); ?>"><?php echo esc_html( $title ); ?></<?php echo esc_attr( $title_tag ); ?>>
